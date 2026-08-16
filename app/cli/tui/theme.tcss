@@ -1,0 +1,256 @@
+Screen {
+    background: #14120f;
+}
+
+#main-layout {
+    height: 100%;
+    layout: vertical;
+}
+
+#welcome-box {
+    height: auto;
+    max-height: 8;
+    margin: 0 3 0 3;
+    padding: 0 1;
+    background: #14120f;
+    border: solid #c15f3c;
+}
+
+#welcome-inner {
+    height: auto;
+}
+
+#welcome-left {
+    width: 1fr;
+    height: auto;
+    padding-right: 1;
+}
+
+#welcome-right {
+    width: 40;
+    height: auto;
+    border-left: solid #3a3530;
+    padding-left: 1;
+}
+
+.brand-line {
+    color: #c15f3c;
+    text-style: bold;
+}
+
+.welcome-greeting {
+    color: #ece6df;
+    text-style: bold;
+    height: 1;
+}
+
+#welcome-brand-row {
+    height: auto;
+    align: left top;
+    margin-top: 0;
+}
+
+#welcome-text-col {
+    width: 1fr;
+    height: auto;
+    padding-left: 1;
+    content-align: left top;
+}
+
+#moma-logo {
+    width: auto;
+    height: auto;
+    min-width: 9;
+}
+
+.mascot-block {
+    color: #c15f3c;
+}
+
+.meta-line {
+    color: #9a9590;
+    margin-top: 0;
+}
+
+.meta-line-dim {
+    color: #6f6a65;
+    margin-top: 0;
+}
+
+.panel-title {
+    color: #c15f3c;
+    text-style: bold;
+    height: 1;
+}
+
+.panel-body {
+    color: #a8a29e;
+    margin-top: 0;
+    height: 1;
+}
+
+.panel-body-dim {
+    color: #78716c;
+    margin-top: 0;
+    max-height: 2;
+}
+
+.recent-title {
+    margin-top: 1;
+}
+
+#chat-scroll {
+    height: 1fr;
+    min-height: 4;
+    background: #14120f;
+    border: none;
+    padding: 1 3;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    scrollbar-size-vertical: 2;
+    scrollbar-background: #14120f;
+    scrollbar-color: #c15f3c;
+    scrollbar-color-hover: #e07a4f;
+}
+
+.user-msg {
+    color: #d6d3d1;
+    text-style: bold;
+    background: #2a2a2a;
+    padding: 0 1;
+    margin-bottom: 1;
+}
+
+.assistant-label {
+    color: #c15f3c;
+    text-style: bold;
+    margin-top: 1;
+}
+
+.assistant-md {
+    margin-bottom: 1;
+    color: #ece6df;
+}
+
+.thinking-msg {
+    color: #78716c;
+}
+
+#run-status {
+    height: auto;
+    min-height: 1;
+    margin: 0 3;
+    padding: 0 1;
+    color: #c15f3c;
+}
+
+.tool-msg {
+    color: #78716c;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+.subagent-msg {
+    color: #d4a574;
+    text-style: bold;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+.system-msg {
+    color: #a8a29e;
+    margin-top: 1;
+}
+
+.error-msg {
+    color: #ef4444;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+#stream-live {
+    height: auto;
+    margin: 1 0;
+    padding: 0 0 1 0;
+    color: #ece6df;
+    background: #14120f;
+}
+
+#slash-menu,
+#session-picker {
+    height: auto;
+    max-height: 10;
+    margin: 0 3;
+    padding: 0 1;
+    background: #1c1917;
+    border: solid #3a3530;
+    color: #ece6df;
+}
+
+#slash-menu:focus,
+#session-picker:focus,
+#slash-menu.-highlight,
+#session-picker.-highlight {
+    background: #1c1917;
+}
+
+#slash-menu > .option-list--option-highlighted,
+#session-picker > .option-list--option-highlighted {
+    background: #292524;
+    color: #c15f3c;
+}
+
+#prompt-row {
+    height: 3;
+    margin: 0 3;
+    padding: 0 1;
+    border-top: solid #c15f3c;
+    align: left middle;
+}
+
+.prompt-glyph {
+    width: 2;
+    color: #c15f3c;
+    text-style: bold;
+    content-align: left middle;
+}
+
+#prompt-input {
+    width: 1fr;
+    height: 3;
+    border: none;
+    background: transparent;
+    padding: 0 1;
+    color: #ece6df;
+}
+
+#prompt-input:focus {
+    background: transparent;
+    border: none;
+}
+
+#status-row {
+    height: 1;
+    margin: 0 3 1 3;
+    padding: 0 1;
+    border-top: solid #c15f3c;
+    color: #78716c;
+}
+
+#status-left {
+    width: 1fr;
+}
+
+#status-right {
+    width: auto;
+    text-align: right;
+}
+
+.status-running {
+    color: #c15f3c;
+}
+
+.status-idle {
+    color: #78716c;
+}

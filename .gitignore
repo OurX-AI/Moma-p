@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+.arts
+
+# Logs
+logs/
+*.log
+
+# Environment files
+env
+env.dev
+!env.example
+
+# Database
+*.db
+*.sqlite3
+
+# AI api-key
+app/config/*.json*
+!app/config/*.json.example
+
+# Project specific
+assistant_snippet_*.txt
+
+# local data
+/data/*
+!/data/agents/
+!/data/agents/**
+!/data/skills/
+!/data/skills/**
+/data/models/*
+!/data/models/*.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+config.toml
+
+# ai 信息
+.claude
+.codegraph
+.memory
+.superpowers
+.moma
+
+# Node
+node_modules/
+
+# Packaging artifacts
+release/
+build/
+dist/

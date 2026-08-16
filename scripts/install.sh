@@ -3,16 +3,16 @@
 # MomaCoder 一键安装脚本
 #
 # 用法:
-#   curl -fsSL https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
 #
 # 指定版本安装:
-#   MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.sh | bash
+#   MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
 #
 set -euo pipefail
 
 # ============ 配置 ============
-GITHUB_USER="YickelFuboo"
-GITHUB_REPO="Moma-Coder"
+GITHUB_USER="OurX-AI"
+GITHUB_REPO="Moma-p"
 INSTALL_DIR="${MOMA_HOME:-$HOME/.moma}"
 VENV_DIR="$INSTALL_DIR/venv"
 BIN_DIR="$HOME/.local/bin"

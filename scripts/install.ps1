@@ -7,18 +7,18 @@
 
 .EXAMPLE
     # 默认安装最新版本
-    iwr -useb https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.ps1 | iex
+    iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
 
     # 指定版本
-    $env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.ps1 | iex
+    $env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
 #>
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 # ============ 配置 ============
-$GitHubUser = "YickelFuboo"
-$GitHubRepo = "Moma-Coder"
+$GitHubUser = "OurX-AI"
+$GitHubRepo = "Moma-p"
 $InstallDir = if ($env:MOMA_HOME) { $env:MOMA_HOME } else { Join-Path $env:USERPROFILE ".moma" }
 $VenvDir    = Join-Path $InstallDir "venv"
 $BinDir     = Join-Path $VenvDir "Scripts"

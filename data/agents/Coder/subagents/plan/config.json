@@ -1,0 +1,27 @@
+{
+  "name_zh": "规划子Agent",
+  "name_en": "Plan",
+  "description_zh": "只读规划：在改代码前产出实现思路、关键文件与风险。",
+  "description_en": "Read-only planner that proposes an implementation approach and critical files before editing.",
+  "when_to_use": "Use before multi-file or ambiguous edits to produce an actionable plan: goal, critical files, ordered steps, risks, and verification commands. Read-only. Do not use for tiny single-file patches.",
+  "readonly": true,
+  "run_limit": {
+    "max_steps": "",
+    "max_duplicate_steps": 2
+  },
+  "llm": {
+    "primary": {
+      "provider": "",
+      "model": ""
+    }
+  },
+  "skills": {
+    "permissions": {}
+  },
+  "tools": {
+    "permissions": {
+      "toolsets": {},
+      "tools": {}
+    }
+  }
+}

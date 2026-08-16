@@ -1,0 +1,122 @@
+{
+  "name_zh": "软件研发助手",
+  "name_en": "Software Development Assistant",
+  "description_zh": "面向软件研发的编码 Agent：读改代码、跑命令、查文档、子任务分解。",
+  "description_en": "Software development coding agent: read/edit code, run commands, docs lookup, and spawn.",
+  "run_limit": {
+    "max_steps": "",
+    "max_duplicate_steps": 2
+  },
+  "mcp_servers": [],
+  "skills": {
+    "allow_manage": "yes",
+    "permissions": {
+      "code-design-recovery": "allow",
+      "frontend-design": "allow",
+      "web-design-guidelines": "allow",
+      "next-best-practices": "allow",
+      "create-skill": "allow",
+      "skill-creator": "allow",
+      "memory": "allow",
+      "tmux": "allow",
+      "find-skills": "allow",
+      "summarize": "allow",
+      "writing-guidelines": "allow",
+      "airunway-aks-setup": "allow"
+    },
+    "external_dirs": []
+  },
+  "tools": {
+    "permissions": {
+      "toolsets": {
+        "ask": "allow",
+        "filesystem": "allow",
+        "web": "allow",
+        "exec": "allow",
+        "todo": "allow",
+        "subagent": "allow",
+        "skills": "allow",
+        "cron": "allow",
+        "codebase": "allow"
+      },
+      "tools": {}
+    },
+    "spawn": {
+      "default_type": "general-purpose",
+      "allow_types": [
+        "general-purpose",
+        "explore",
+        "plan",
+        "verification"
+      ]
+    }
+  },
+  "llm": {
+    "primary": {
+      "provider": "",
+      "model": ""
+    },
+    "fallback": {
+      "provider": "",
+      "model": ""
+    }
+  },
+  "permissions": {
+    "defaultMode": "default",
+    "modes": {
+      "default": {
+        "unmatched": "allow",
+        "description": "未匹配规则时放行（极端熔断除外）"
+      },
+      "strict": {
+        "unmatched": "deny",
+        "description": "未匹配一律拒绝"
+      },
+      "readonly": {
+        "unmatched": "readonly_or_deny",
+        "description": "未匹配时仅内置只读命令放行"
+      }
+    },
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(pytest *)",
+      "Bash(python *)",
+      "Bash(pip *)",
+      "PowerShell(git *)",
+      "PowerShell(npm *)",
+      "PowerShell(pytest *)",
+      "PowerShell(python *)",
+      "PowerShell(pip *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push *)",
+      "Bash(shutdown *)",
+      "Bash(reboot *)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(git push *)",
+      "Read(./.env)",
+      "Read(**/.env)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "denyNetwork": false,
+    "filesystem": {
+      "allowWrite": [],
+      "denyRead": []
+    }
+  },
+  "task_classification": {
+    "valid_types": ["implement", "consult", "analyze", "debug"],
+    "default_type": "implement",
+    "classification_prompt": "prompts/task/classification.md",
+    "task_guidance_prompt": {
+      "implement": "prompts/task/implement.md",
+      "consult": "prompts/task/consult.md",
+      "analyze": "prompts/task/analyze.md",
+      "debug": "prompts/task/debug.md"
+    }
+  }
+}

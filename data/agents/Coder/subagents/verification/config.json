@@ -1,0 +1,55 @@
+{
+  "name_zh": "验证子Agent",
+  "name_en": "Verification",
+  "description_zh": "独立验测：跑构建/测试/对抗探测，给出 PASS/FAIL/PARTIAL 与证据；禁止改仓库代码。",
+  "description_en": "Independent verifier: run builds/tests/adversarial probes and return PASS/FAIL/PARTIAL with evidence. Must not edit project files.",
+  "when_to_use": "Use after non-trivial implementation (roughly 3+ files, backend/API/infra) via spawn(type=\"verification\") before claiming done. Pass original user task, changed files, approach. End with VERDICT: PASS|FAIL|PARTIAL. Do NOT treat the implementer's own tests as PASS — verifier assigns VERDICT. On FAIL/PARTIAL: main agent fixes, then re-spawn with prior findings. Trivial single-file edits may skip.",
+  "readonly": true,
+  "run_limit": {
+    "max_steps": "",
+    "max_duplicate_steps": 2
+  },
+  "llm": {
+    "primary": {
+      "provider": "",
+      "model": ""
+    }
+  },
+  "skills": {
+    "permissions": {}
+  },
+  "tools": {
+    "permissions": {
+      "toolsets": {
+        "filesystem": "allow",
+        "exec": "allow",
+        "web": "allow",
+        "skills": "allow"
+      },
+      "tools": {
+        "write_file": "deny",
+        "apply_patch": "deny",
+        "edit_file": "deny",
+        "skill_manage": "deny",
+        "skill_hub": "deny"
+      }
+    }
+  },
+  "permissions": {
+    "defaultMode": "default",
+    "deny": [
+      "Write",
+      "Edit",
+      "Read(**/.env)",
+      "Read(./.env)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "denyNetwork": false,
+    "filesystem": {
+      "allowWrite": [],
+      "denyRead": []
+    }
+  }
+}

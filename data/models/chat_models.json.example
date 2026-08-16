@@ -1,0 +1,105 @@
+{
+  "_comment": "LLM聊天模型配置文件 - 请根据实际需要修改api_key和base_url",
+  "default": {
+    "provider": "deepseek",
+    "model": "deepseek-chat"
+  },
+  "models": {
+    "openai": {
+      "description": "OpenAI GPT系列模型",
+      "base_url": "https://api.openai.com/v1",
+      "api_key": "your_openai_api_key",
+      "api_type": "openai",
+      "is_valid": 0,
+      "instances": {
+        "gpt-4o": {
+          "description": "OpenAI GPT-4o 通用版本"
+        },
+        "gpt-4o-mini": {
+          "description": "OpenAI GPT-4o Mini 轻量版本"
+        },
+        "gpt-4-turbo": {
+          "description": "OpenAI GPT-4 Turbo"
+        }
+      }
+    },
+    "deepseek": {
+      "description": "DeepSeek系列模型",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "your_deepseek_api_key",
+      "api_type": "openai",
+      "is_valid": 0,
+      "instances": {
+        "deepseek-chat": {
+          "description": "DeepSeek Chat 最新版本"
+        },
+        "deepseek-coder": {
+          "description": "DeepSeek Coder 代码专用模型"
+        },
+        "deepseek-reasoner": {
+          "description": "DeepSeek Reasoner 推理专用模型"
+        }
+      }
+    },
+    "qwen": {
+      "description": "阿里云通义千问系列模型",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "api_key": "your_qwen_api_key",
+      "api_type": "openai",
+      "is_valid": 0,
+      "instances": {
+        "qwen-max": {
+          "description": "通义千问Max 最强版本"
+        },
+        "qwen-plus": {
+          "description": "通义千问Plus 增强版本"
+        }
+      }
+    },
+    "siliconflow": {
+      "description": "SiliconFlow系列模型",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "api_key": "your_siliconflow_api_key",
+      "api_type": "openai",
+      "is_valid": 0,
+      "instances": {
+        "llama-3.3-70b-instruct": {
+          "description": "LLaMA 3.3 70B指令版本"
+        },
+        "llama-3.3-8b-instruct": {
+          "description": "LLaMA 3.3 8B指令版本"
+        }
+      }
+    },
+    "claude": {
+      "description": "Anthropic Claude系列模型",
+      "base_url": "https://api.anthropic.com",
+      "api_key": "your_claude_api_key",
+      "api_type": "anthropic",
+      "is_valid": 0,
+      "instances": {
+        "claude-3.5-sonnet-20241022": {
+          "description": "Claude 3.5 Sonnet 最新版本"
+        },
+        "claude-3.5-sonnet": {
+          "description": "Claude 3.5 Sonnet 通用版本"
+        }
+      }
+    },
+    "zhipu": {
+      "description": "智谱AI系列模型（OpenAI兼容）",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "api_key": "your_zhipu_api_key",
+      "api_type": "openai",
+      "is_valid": 0,
+      "instances": {
+        "glm-5": {
+          "description": "智谱AI GLM-5"
+        },
+        "glm-4.7": {
+          "description": "智谱AI GLM-4.7"
+        }
+      }
+    }
+  }
+}

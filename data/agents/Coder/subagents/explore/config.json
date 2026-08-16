@@ -1,0 +1,27 @@
+{
+  "name_zh": "代码探索子Agent",
+  "name_en": "Explore",
+  "description_zh": "只读探索：快速定位文件、符号与调用关系，返回简洁证据地图。",
+  "description_en": "Fast read-only explorer for locating files, symbols, and call paths in a codebase.",
+  "when_to_use": "Use for read-only codebase mapping: locate files/symbols/call paths and return an evidence map. Prefer over dumping many greps into the main context. Always pass thoroughness: quick | medium | very thorough (default medium). Do not use for editing.",
+  "readonly": true,
+  "run_limit": {
+    "max_steps": "",
+    "max_duplicate_steps": 2
+  },
+  "llm": {
+    "primary": {
+      "provider": "",
+      "model": ""
+    }
+  },
+  "skills": {
+    "permissions": {}
+  },
+  "tools": {
+    "permissions": {
+      "toolsets": {},
+      "tools": {}
+    }
+  }
+}

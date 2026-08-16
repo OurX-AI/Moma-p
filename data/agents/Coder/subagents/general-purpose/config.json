@@ -1,0 +1,27 @@
+{
+  "name_zh": "通用子Agent",
+  "name_en": "General Purpose",
+  "description_zh": "通用子任务执行单元：在父 Agent 工具子集上完成多步检索或有界实现，结果回传主 Agent。",
+  "description_en": "General-purpose worker for multi-step research or bounded implementation that should stay out of the main context.",
+  "when_to_use": "Use for bounded writable subtasks (multi-step research or limited implementation) when intermediate tool noise should stay out of the main transcript. Prefer explore for pure navigation and plan for design-before-edit.",
+  "readonly": false,
+  "run_limit": {
+    "max_steps": "",
+    "max_duplicate_steps": 2
+  },
+  "llm": {
+    "primary": {
+      "provider": "",
+      "model": ""
+    }
+  },
+  "skills": {
+    "permissions": {}
+  },
+  "tools": {
+    "permissions": {
+      "toolsets": {},
+      "tools": {}
+    }
+  }
+}

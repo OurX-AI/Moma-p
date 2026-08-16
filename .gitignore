@@ -45,8 +45,9 @@ assistant_snippet_*.txt
 !/data/agents/**
 !/data/skills/
 !/data/skills/**
-/data/models/*
-!/data/models/*.example
+!/data/models/
+/data/models/*.json
+!/data/models/*.json.example
 
 # OS
 .DS_Store

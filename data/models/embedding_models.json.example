@@ -1,0 +1,263 @@
+{
+  "_comment": "嵌入模型配置文件 - 请根据实际需要修改api_key和base_url",
+  "default": {
+    "provider": "siliconflow",
+    "model": "Qwen/Qwen3-Embedding-8B"
+  },
+  "models": {
+    "baai": {
+      "description": "BAAI嵌入模型",
+      "base_url": "",
+      "api_key": "",
+      "is_valid": 0,
+      "instances": {
+        "BAAI/bge-large-zh-v1.5": {
+          "description": "BAAI BGE Large 中文版本"
+        },
+        "BAAI/bge-large-en-v1.5": {
+          "description": "BAAI BGE Large 英文版本"
+        },
+        "BAAI/bge-base-zh-v1.5": {
+          "description": "BAAI BGE Base 中文版本"
+        }
+      }
+    },
+    "openai": {
+      "description": "OpenAI嵌入模型",
+      "base_url": "https://api.openai.com/v1",
+      "api_key": "your_openai_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "text-embedding-ada-002": {
+          "description": "OpenAI Ada 002 嵌入模型"
+        },
+        "text-embedding-3-small": {
+          "description": "OpenAI 3 Small 嵌入模型"
+        },
+        "text-embedding-3-large": {
+          "description": "OpenAI 3 Large 嵌入模型"
+        }
+      }
+    },
+    "qwen": {
+      "description": "通义千问嵌入模型",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "api_key": "your_qwen_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "text-embedding-v1": {
+          "description": "通义千问文本嵌入V1"
+        },
+        "text-embedding-v2": {
+          "description": "通义千问文本嵌入V2"
+        }
+      }
+    },
+    "zhipu": {
+      "description": "智谱AI嵌入模型",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "api_key": "your_zhipu_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "embedding-2": {
+          "description": "智谱AI嵌入模型2"
+        }
+      }
+    },
+    "ollama": {
+      "description": "Ollama本地嵌入模型",
+      "base_url": "http://localhost:11434",
+      "api_key": "",
+      "is_valid": 0,
+      "instances": {
+        "nomic-embed-text": {
+          "description": "Ollama Nomic嵌入模型"
+        },
+        "mxbai-embed-large": {
+          "description": "Ollama MXBai嵌入模型"
+        }
+      }
+    },
+    "azure": {
+      "description": "Azure OpenAI嵌入模型",
+      "base_url": "https://your-azure-endpoint.openai.azure.com",
+      "api_key": "your_azure_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "text-embedding-ada-002": {
+          "description": "Azure OpenAI Ada 002嵌入模型"
+        }
+      }
+    },
+    "baichuan": {
+      "description": "百川嵌入模型",
+      "base_url": "https://api.baichuan-ai.com/v1",
+      "api_key": "your_baichuan_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "Baichuan-Text-Embedding": {
+          "description": "百川文本嵌入模型"
+        }
+      }
+    },
+    "jina": {
+      "description": "Jina嵌入模型",
+      "base_url": "https://api.jina.ai/v1",
+      "api_key": "your_jina_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "jina-embeddings-v3": {
+          "description": "Jina Embeddings v3（多语+task；商用推荐）"
+        },
+        "jina-embeddings-v2-base-code": {
+          "description": "Jina Embeddings v2 代码检索"
+        },
+        "jina-embeddings-v2-base-en": {
+          "description": "Jina嵌入V2英文基础版"
+        },
+        "jina-embeddings-v2-base-zh": {
+          "description": "Jina嵌入V2中文基础版"
+        }
+      }
+    },
+    "cohere": {
+      "description": "Cohere嵌入模型",
+      "base_url": "https://api.cohere.ai/v1",
+      "api_key": "your_cohere_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "embed-english-v2.0": {
+          "description": "Cohere英文嵌入V2.0"
+        },
+        "embed-multilingual-v2.0": {
+          "description": "Cohere多语言嵌入V2.0"
+        }
+      }
+    },
+    "siliconflow": {
+      "description": "SiliconFlow嵌入模型",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "api_key": "your_siliconflow_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "Qwen/Qwen3-Embedding-8B": {
+          "description": "Qwen3 Embedding 8B（含 code retrieval；默认 1024 维）",
+          "dimensions": 1024
+        },
+        "Qwen/Qwen3-Embedding-4B": {
+          "description": "Qwen3 Embedding 4B（含 code retrieval）",
+          "dimensions": 1024
+        },
+        "Qwen/Qwen3-Embedding-0.6B": {
+          "description": "Qwen3 Embedding 0.6B（轻量）",
+          "dimensions": 1024
+        },
+        "text-embedding-ada-002": {
+          "description": "SiliconFlow Ada 002嵌入模型"
+        },
+        "BAAI/bge-m3": {
+          "description": "SiliconFlow BAAI BGE M3 多语言版本"
+        }
+      }
+    },
+    "localai": {
+      "description": "LocalAI嵌入模型",
+      "base_url": "http://localhost:8080/v1",
+      "api_key": "",
+      "is_valid": 0,
+      "instances": {
+        "sentence-transformers": {
+          "description": "LocalAI句子转换器"
+        }
+      }
+    },
+    "bedrock": {
+      "description": "AWS Bedrock嵌入模型",
+      "base_url": "",
+      "api_key": "{\"bedrock_ak\": \"your_ak\", \"bedrock_sk\": \"your_sk\", \"bedrock_region\": \"us-east-1\"}",
+      "is_valid": 0,
+      "instances": {
+        "amazon.titan-embed-text-v1": {
+          "description": "Amazon Titan文本嵌入V1"
+        }
+      }
+    },
+    "gemini": {
+      "description": "Google Gemini嵌入模型",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "api_key": "your_gemini_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "embedding-001": {
+          "description": "Gemini嵌入模型001"
+        }
+      }
+    },
+    "nvidia": {
+      "description": "NVIDIA嵌入模型",
+      "base_url": "https://api.nvcf.nvidia.com/v1",
+      "api_key": "your_nvidia_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "nvidia/embed-qa-4": {
+          "description": "NVIDIA问答嵌入4"
+        }
+      }
+    },
+    "xinference": {
+      "description": "Xinference嵌入模型",
+      "base_url": "http://localhost:9997/v1",
+      "api_key": "",
+      "is_valid": 0,
+      "instances": {
+        "bge-large-zh-v1.5": {
+          "description": "Xinference BGE Large中文"
+        }
+      }
+    },
+    "mistral": {
+      "description": "Mistral嵌入模型",
+      "base_url": "https://api.mistral.ai/v1",
+      "api_key": "your_mistral_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "mistral-embed": {
+          "description": "Mistral嵌入模型"
+        }
+      }
+    },
+    "baidu_yiyan": {
+      "description": "百度文心嵌入模型",
+      "base_url": "",
+      "api_key": "{\"yiyan_ak\": \"your_ak\", \"yiyan_sk\": \"your_sk\"}",
+      "is_valid": 0,
+      "instances": {
+        "embedding-v1": {
+          "description": "百度文心嵌入V1"
+        }
+      }
+    },
+    "voyage": {
+      "description": "Voyage嵌入模型",
+      "base_url": "https://api.voyageai.com/v1",
+      "api_key": "your_voyage_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "voyage-large-2": {
+          "description": "Voyage Large 2"
+        }
+      }
+    },
+    "huggingface": {
+      "description": "HuggingFace嵌入模型",
+      "base_url": "https://api-inference.huggingface.co",
+      "api_key": "your_huggingface_embed_api_key",
+      "is_valid": 0,
+      "instances": {
+        "sentence-transformers/all-MiniLM-L6-v2": {
+          "description": "HuggingFace句子转换器"
+        }
+      }
+    }
+  }
+}

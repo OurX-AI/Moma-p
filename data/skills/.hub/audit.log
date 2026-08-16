@@ -1,0 +1,311 @@
+2026-06-10T10:24:35.804089+00:00 install ok name=tmux id=bundled:tmux verdict=safe
+2026-06-10T10:34:37.914939+00:00 install ok name=HubVerifyBuiltinSkill id=builtin:HubVerifyBuiltinSkill verdict=safe
+2026-06-10T10:34:42.153153+00:00 uninstall ok name=HubVerifyBuiltinSkill
+2026-06-10T10:34:42.255483+00:00 install ok name=HubVerifyBuiltinSkill id=builtin:HubVerifyBuiltinSkill verdict=safe
+2026-06-10T10:34:42.709622+00:00 uninstall ok name=HubVerifyBuiltinSkill
+2026-06-10T10:39:54.093454+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:39:54.110810+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:39:54.208941+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:39:54.228847+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:39:54.374921+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:39:54.416178+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:41:01.815364+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:41:01.842224+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:41:01.898730+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:41:01.915394+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:41:02.030458+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T10:41:02.064869+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T10:57:42.510268+00:00 install ok name=clawhub id=builtin:clawhub verdict=safe
+2026-06-10T11:49:37.145391+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T11:49:37.162239+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T11:49:37.239830+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T11:49:37.256426+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T11:49:37.368229+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T11:49:37.399232+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:15:14.962302+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:15:14.977747+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T12:15:14.985612+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:15:15.069482+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:15:15.083279+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:15:15.165981+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:15:15.205375+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T12:15:15.231334+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:16:03.302708+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:16:03.324636+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T12:16:03.333407+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:16:40.820236+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:16:40.829982+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T12:16:40.904620+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T12:16:40.939141+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T12:16:40.959928+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:08:53.626160+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:08:53.642828+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:08:53.653737+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:08:53.661074+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:08:53.663083+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:09:30.806327+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:09:30.814096+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:09:30.881071+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:09:30.912363+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:09:30.929102+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:09:30.948492+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:09:30.953856+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:17:03.423696+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:17:03.446528+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:17:03.452552+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:17:03.457773+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:17:03.466850+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:17:46.199730+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:17:46.211434+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:17:46.266380+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:17:46.312381+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:17:46.322365+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:17:46.351791+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:17:46.367009+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:21:26.967114+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:21:26.991604+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:21:26.994604+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:21:26.994604+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:21:26.994604+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:21:38.680542+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:21:38.685277+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:21:38.752184+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:21:38.784636+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:21:38.803135+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:21:38.835719+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:21:38.849541+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:44:29.129866+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:44:29.148691+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:44:29.150714+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:44:29.150714+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:44:29.165982+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:44:39.773699+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:44:39.778123+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T13:44:39.845131+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T13:44:39.885004+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T13:44:39.895443+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:44:39.926852+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T13:44:39.937980+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:13:34.103135+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:13:34.198035+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:13:34.253821+00:00 enable agents name=hub_verify_tmp ok=1/1
+2026-06-10T14:13:34.270577+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:13:34.284512+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:13:34.290770+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:13:34.294788+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:13:40.830381+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:13:40.844319+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:13:40.961124+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:13:40.996813+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:13:41.016301+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:13:41.031686+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:13:41.053538+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:23:36.097436+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:23:36.185717+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:23:36.248060+00:00 enable agents name=hub_verify_tmp ok=1/1
+2026-06-10T14:23:36.262835+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:23:36.270405+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:23:36.276525+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:23:36.283525+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:23:36.285522+00:00 wellknown host add hub-verify-wk.example.com
+2026-06-10T14:23:36.285522+00:00 wellknown host remove hub-verify-wk.example.com
+2026-06-10T14:23:53.595479+00:00 install ok name=akshare-stock id=clawhub:akshare-stock verdict=safe
+2026-06-10T14:23:53.610045+00:00 uninstall ok name=akshare-stock
+2026-06-10T14:23:53.688690+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:23:53.697174+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:23:53.819868+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:23:53.856040+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:23:53.874904+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:23:53.894832+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:23:53.908091+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:31:05.207036+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:31:05.299997+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:31:05.356141+00:00 enable agents name=hub_verify_tmp ok=1/1
+2026-06-10T14:31:05.369469+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:31:05.375572+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:31:05.379601+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:31:05.387398+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:31:05.391428+00:00 wellknown host add hub-verify-wk.example.com
+2026-06-10T14:31:05.397401+00:00 wellknown host remove hub-verify-wk.example.com
+2026-06-10T14:31:21.308613+00:00 install ok name=akshare-stock id=clawhub:akshare-stock verdict=safe
+2026-06-10T14:31:21.322781+00:00 uninstall ok name=akshare-stock
+2026-06-10T14:31:21.395854+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:31:21.404773+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:31:21.508848+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:31:21.539168+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:31:21.560072+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:31:21.579874+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:31:21.591886+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:34:31.071128+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:34:31.180144+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:34:31.238602+00:00 enable agents name=hub_verify_tmp ok=1/1
+2026-06-10T14:34:31.238602+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:34:31.255289+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:34:31.255289+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:34:31.272043+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:34:31.276525+00:00 wellknown host add hub-verify-wk.example.com
+2026-06-10T14:34:31.281853+00:00 wellknown host remove hub-verify-wk.example.com
+2026-06-10T14:34:45.587196+00:00 install ok name=akshare-stock id=clawhub:akshare-stock verdict=safe
+2026-06-10T14:34:45.603802+00:00 uninstall ok name=akshare-stock
+2026-06-10T14:34:45.670603+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:34:45.687284+00:00 uninstall ok name=hub_verify_tmp
+2026-06-10T14:34:45.787412+00:00 install ok name=hub_verify_tmp id=builtin:hub_verify_tmp verdict=safe
+2026-06-10T14:34:45.820829+00:00 audit name=hub_verify_tmp verdict=safe
+2026-06-10T14:34:45.837473+00:00 tap add repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:34:45.864413+00:00 tap remove repo=hub-verify-tap-owner/hub-verify-tap-repo
+2026-06-10T14:34:45.870883+00:00 uninstall ok name=hub_verify_tmp
+2026-06-11T00:38:25.145103+00:00 install ok name=tavily-search-free id=lobehub:dwsy-agent-tavily-search-free verdict=safe
+2026-06-11T00:38:25.609991+00:00 enable agents name=tavily-search-free ok=6/6
+2026-06-11T02:09:37.142392+00:00 install ok name=find-skills id=skills-sh:vercel-labs/skills/find-skills verdict=safe
+2026-06-11T02:17:30.918339+00:00 install ok name=find-skills id=skills-sh:vercel-labs/skills/find-skills verdict=safe
+2026-06-11T02:17:31.610666+00:00 enable agents name=find-skills ok=6/6
+2026-06-11T03:48:07.050731+00:00 install ok name=sn-da-excel-workflow id=lobehub:opensensenova-sensenova-skills-sn-da-excel-workflow verdict=safe
+2026-06-11T03:48:09.335811+00:00 enable agents name=sn-da-excel-workflow ok=6/6
+2026-06-11T03:48:09.441446+00:00 install ok name=frontend-design id=skills-sh:anthropics/skills/frontend-design verdict=safe
+2026-06-11T03:48:17.808433+00:00 install ok name=sn-infographic id=lobehub:opensensenova-sensenova-skills-sn-infographic verdict=safe
+2026-06-11T03:48:22.628496+00:00 enable agents name=sn-infographic ok=6/6
+2026-06-11T03:48:23.464164+00:00 install ok name=sn-ppt-standard id=lobehub:opensensenova-sensenova-skills-sn-ppt-standard verdict=safe
+2026-06-11T03:48:24.673854+00:00 enable agents name=sn-ppt-standard ok=6/6
+2026-06-11T03:48:28.377297+00:00 install ok name=categorical-comparison-analysis id=lobehub:opensensenova-sensenova-skills-comparison-analysis verdict=safe
+2026-06-11T03:48:29.935060+00:00 enable agents name=categorical-comparison-analysis ok=6/6
+2026-06-11T03:48:30.197978+00:00 install ok name=category-statistics id=lobehub:opensensenova-sensenova-skills-category-statistics verdict=safe
+2026-06-11T03:48:32.117520+00:00 enable agents name=category-statistics ok=6/6
+2026-06-11T03:48:32.286510+00:00 install ok name=category-filtering-and-difficulty-analysis id=lobehub:opensensenova-sensenova-skills-category-filtering verdict=safe
+2026-06-11T03:48:35.237318+00:00 enable agents name=category-filtering-and-difficulty-analysis ok=6/6
+2026-06-11T03:48:39.750159+00:00 install ok name=condition-filtering-and-large-file-optimization id=lobehub:opensensenova-sensenova-skills-condition-filtering verdict=safe
+2026-06-11T03:48:42.157992+00:00 enable agents name=condition-filtering-and-large-file-optimization ok=6/6
+2026-06-11T03:49:02.726697+00:00 install ok name=dynamic-large-file-parquet-analysis id=lobehub:opensensenova-sensenova-skills-table-theme-styling verdict=safe
+2026-06-11T03:49:06.661454+00:00 enable agents name=dynamic-large-file-parquet-analysis ok=6/6
+2026-06-11T03:51:31.980543+00:00 install ok name=frontend-design id=skills-sh:anthropics/skills/frontend-design verdict=safe
+2026-06-16T00:42:03.794171+00:00 uninstall ok name=categorical-comparison-analysis
+2026-06-16T00:42:05.788111+00:00 uninstall ok name=category-filtering-and-difficulty-analysis
+2026-06-16T00:42:10.758574+00:00 uninstall ok name=category-statistics
+2026-06-16T00:42:13.412148+00:00 uninstall ok name=condition-filtering-and-large-file-optimization
+2026-06-16T00:42:17.017169+00:00 uninstall ok name=dynamic-large-file-parquet-analysis
+2026-06-16T00:42:22.738202+00:00 uninstall ok name=frontend-design
+2026-06-16T00:42:26.947815+00:00 uninstall ok name=sn-da-excel-workflow
+2026-06-16T00:42:31.430275+00:00 uninstall ok name=sn-infographic
+2026-06-16T00:42:34.072684+00:00 uninstall ok name=sn-ppt-standard
+2026-06-16T00:42:36.594810+00:00 uninstall ok name=tavily-search-free
+2026-06-16T00:45:28.868143+00:00 uninstall ok name=find-skills
+2026-06-16T04:24:01.893780+00:00 install ok name=find-skills id=skills-sh:vercel-labs/skills/find-skills verdict=safe
+2026-06-16T04:24:03.410615+00:00 enable agents name=find-skills ok=5/5
+2026-06-16T04:24:20.458628+00:00 install ok name=frontend-design id=skills-sh:anthropics/skills/frontend-design verdict=safe
+2026-06-16T04:24:21.250043+00:00 enable agents name=frontend-design ok=1/1
+2026-06-16T04:25:03.865727+00:00 install ok name=web-design-guidelines id=skills-sh:vercel-labs/agent-skills/web-design-guidelines verdict=safe
+2026-06-16T04:25:04.190847+00:00 enable agents name=web-design-guidelines ok=1/1
+2026-06-16T04:27:49.185285+00:00 install ok name=create-skill id=skills-sh:siviter-xyz/dot-agent/create-skill verdict=safe
+2026-06-16T04:27:51.554056+00:00 enable agents name=create-skill ok=6/6
+2026-06-16T04:49:56.899020+00:00 install ok name=airunway-aks-setup id=skills-sh:microsoft/azure-skills/airunway-aks-setup verdict=safe
+2026-06-16T04:49:59.459152+00:00 enable agents name=airunway-aks-setup ok=6/6
+2026-06-16T04:50:10.422005+00:00 install ok name=next-best-practices id=skills-sh:vercel-labs/next-skills/next-best-practices verdict=safe
+2026-06-16T04:50:17.899261+00:00 enable agents name=next-best-practices ok=6/6
+2026-06-16T04:50:57.699428+00:00 install ok name=pptx id=skills-sh:anthropics/skills/pptx verdict=safe
+2026-06-16T04:51:28.838545+00:00 enable agents name=pptx ok=6/6
+2026-06-16T04:51:36.123457+00:00 install ok name=writing-guidelines id=skills-sh:vercel-labs/agent-skills/writing-guidelines verdict=safe
+2026-06-16T04:51:53.700466+00:00 enable agents name=writing-guidelines ok=6/6
+2026-06-16T04:52:09.888847+00:00 install ok name=docx id=skills-sh:anthropics/skills/docx verdict=safe
+2026-06-16T04:52:14.534865+00:00 enable agents name=docx ok=6/6
+2026-06-17T22:16:50.159282+00:00 install ok name=research-add-fields id=skills-sh:weizhena/deep-research-skills/research-add-fields verdict=safe
+2026-06-17T22:16:50.331284+00:00 enable agents name=research-add-fields ok=1/1
+2026-06-17T22:18:11.285615+00:00 install ok name=research-add-items id=skills-sh:weizhena/deep-research-skills/research-add-items verdict=safe
+2026-06-17T22:18:11.495683+00:00 enable agents name=research-add-items ok=1/1
+2026-06-17T22:18:21.392799+00:00 install ok name=research id=skills-sh:weizhena/deep-research-skills/research verdict=safe
+2026-06-17T22:18:21.640755+00:00 enable agents name=research ok=1/1
+2026-06-17T22:18:32.705567+00:00 install ok name=research-report id=skills-sh:weizhena/deep-research-skills/research-report verdict=safe
+2026-06-17T22:18:32.875774+00:00 enable agents name=research-report ok=1/1
+2026-06-17T22:18:37.722552+00:00 install ok name=research-deep id=skills-sh:weizhena/deep-research-skills/research-deep verdict=safe
+2026-06-17T22:18:37.904169+00:00 enable agents name=research-deep ok=1/1
+2026-06-17T22:18:58.036504+00:00 install ok name=deep-research-to-notebooklm id=clawhub:jclaw-deep-research-to-notebooklm verdict=safe
+2026-06-17T22:18:58.217510+00:00 enable agents name=deep-research-to-notebooklm ok=1/1
+2026-06-17T22:20:34.336264+00:00 install ok name=deep-research-skills id=skills-sh:wentorai/research-plugins/deep-research-skills verdict=safe
+2026-06-17T22:20:34.905516+00:00 enable agents name=deep-research-skills ok=1/1
+2026-06-17T22:22:21.317586+00:00 install ok name=deer-flow id=clawhub:deer-flow verdict=safe
+2026-06-17T22:22:21.588826+00:00 enable agents name=deer-flow ok=1/1
+2026-06-17T22:22:36.954804+00:00 install ok name=deep-research-to-notebooklm id=clawhub:jclaw-deep-research-to-notebooklm verdict=safe
+2026-06-17T22:22:37.288048+00:00 enable agents name=deep-research-to-notebooklm ok=1/1
+2026-06-17T22:24:28.933540+00:00 uninstall ok name=deer-flow path=F:\Product_Dev\Pando-Harness\data\skills\deer-flow
+2026-06-18T08:00:00.000000+00:00 uninstall ok name=deep-research-skills path=F:\Product_Dev\Pando-Harness\data\skills\wentorai\deep-research-skills
+2026-06-18T08:05:00.000000+00:00 uninstall ok name=deep-research-to-notebooklm path=F:\Product_Dev\Pando-Harness\data\skills\deep-research-to-notebooklm
+2026-06-17T23:03:37.559372+00:00 install ok name=story-long-write id=skills-sh:worldwonderer/oh-story-claudecode/story-long-write verdict=safe
+2026-06-17T23:03:38.805118+00:00 enable agents name=story-long-write ok=1/1
+2026-06-17T23:03:44.297975+00:00 install ok name=story-deslop id=skills-sh:worldwonderer/oh-story-claudecode/story-deslop verdict=safe
+2026-06-17T23:03:44.727677+00:00 enable agents name=story-deslop ok=1/1
+2026-06-17T23:03:54.570908+00:00 install ok name=story-long-analyze id=skills-sh:worldwonderer/oh-story-claudecode/story-long-analyze verdict=safe
+2026-06-17T23:03:54.915380+00:00 enable agents name=story-long-analyze ok=1/1
+2026-06-17T23:04:17.862678+00:00 install ok name=story-short-write id=skills-sh:worldwonderer/oh-story-claudecode/story-short-write verdict=safe
+2026-06-17T23:04:18.148341+00:00 enable agents name=story-short-write ok=1/1
+2026-06-17T23:04:35.498809+00:00 install ok name=story-short-analyze id=skills-sh:worldwonderer/oh-story-claudecode/story-short-analyze verdict=safe
+2026-06-17T23:04:35.757561+00:00 enable agents name=story-short-analyze ok=1/1
+2026-06-17T23:04:46.885127+00:00 install ok name=story-long-scan id=skills-sh:worldwonderer/oh-story-claudecode/story-long-scan verdict=safe
+2026-06-17T23:04:47.192537+00:00 enable agents name=story-long-scan ok=1/1
+2026-06-17T23:04:51.467719+00:00 install ok name=browser-cdp id=skills-sh:worldwonderer/oh-story-claudecode/browser-cdp verdict=safe
+2026-06-17T23:04:51.737859+00:00 enable agents name=browser-cdp ok=1/1
+2026-06-17T23:04:58.487762+00:00 install ok name=story-short-scan id=skills-sh:worldwonderer/oh-story-claudecode/story-short-scan verdict=safe
+2026-06-17T23:04:58.777624+00:00 enable agents name=story-short-scan ok=1/1
+2026-06-17T23:05:03.105830+00:00 install ok name=story-cover id=skills-sh:worldwonderer/oh-story-claudecode/story-cover verdict=safe
+2026-06-17T23:05:03.367597+00:00 enable agents name=story-cover ok=1/1
+2026-06-17T23:05:36.307501+00:00 install ok name=story-setup id=skills-sh:worldwonderer/oh-story-claudecode/story-setup verdict=safe
+2026-06-17T23:05:36.650706+00:00 enable agents name=story-setup ok=1/1
+2026-06-17T23:05:41.179667+00:00 install ok name=story id=skills-sh:worldwonderer/oh-story-claudecode/story verdict=safe
+2026-06-17T23:05:41.477340+00:00 enable agents name=story ok=1/1
+2026-06-17T23:05:52.225277+00:00 install ok name=story-review id=skills-sh:worldwonderer/oh-story-claudecode/story-review verdict=safe
+2026-06-17T23:05:52.759848+00:00 enable agents name=story-review ok=1/1
+2026-06-17T23:06:02.417586+00:00 install ok name=story-import id=skills-sh:worldwonderer/oh-story-claudecode/story-import verdict=safe
+2026-06-17T23:06:02.707357+00:00 enable agents name=story-import ok=1/1
+2026-06-17T23:06:11.767325+00:00 install ok name=video-recap id=skills-sh:worldwonderer/video-recap-skills/video-recap verdict=safe
+2026-06-17T23:06:12.187571+00:00 enable agents name=video-recap ok=1/1
+2026-06-17T23:06:18.323964+00:00 install ok name=video-voiceover id=skills-sh:worldwonderer/video-recap-skills/video-voiceover verdict=safe
+2026-06-17T23:06:19.050468+00:00 enable agents name=video-voiceover ok=1/1
+2026-06-17T23:06:26.722119+00:00 install ok name=video-script id=skills-sh:worldwonderer/video-recap-skills/video-script verdict=safe
+2026-06-17T23:06:27.397308+00:00 enable agents name=video-script ok=1/1
+2026-06-17T23:06:40.187860+00:00 install ok name=video-understanding id=skills-sh:worldwonderer/video-recap-skills/video-understanding verdict=safe
+2026-06-17T23:06:40.601988+00:00 enable agents name=video-understanding ok=1/1
+2026-06-17T23:06:49.502045+00:00 install ok name=video-assemble id=skills-sh:worldwonderer/video-recap-skills/video-assemble verdict=safe
+2026-06-17T23:06:50.182636+00:00 enable agents name=video-assemble ok=1/1
+2026-06-17T23:06:57.095397+00:00 install ok name=video-cut id=skills-sh:worldwonderer/video-recap-skills/video-cut verdict=safe
+2026-06-17T23:06:58.041447+00:00 enable agents name=video-cut ok=1/1
+2026-06-17T23:07:11.692102+00:00 install ok name=video-recap id=skills-sh:worldwonderer/video-recap/video-recap verdict=safe
+2026-06-17T23:07:12.057854+00:00 enable agents name=video-recap ok=0/1
+2026-06-17T23:07:19.827115+00:00 install ok name=xiaoyuzhou-asr id=skills-sh:worldwonderer/xiaoyuzhou-asr/xiaoyuzhou-asr verdict=safe
+2026-06-17T23:07:20.302609+00:00 enable agents name=xiaoyuzhou-asr ok=1/1
+2026-06-20T00:44:36.333288+00:00 install ok name=humanizer-zh id=skills-sh:op7418/humanizer-zh/humanizer-zh verdict=safe
+2026-06-20T00:44:36.788846+00:00 enable agents name=humanizer-zh ok=1/1
+2026-06-20T00:48:40.153136+00:00 install ok name=guizang-social-card-skill id=skills-sh:op7418/guizang-social-card-skill/guizang-social-card-skill verdict=safe
+2026-06-20T00:48:40.685455+00:00 enable agents name=guizang-social-card-skill ok=1/1
+2026-06-20T00:50:07.260241+00:00 install ok name=qiaomu-anything-to-notebooklm id=skills-sh:joeseesun/anything-to-notebooklm/anything-to-notebooklm verdict=safe
+2026-06-20T00:50:07.829908+00:00 enable agents name=qiaomu-anything-to-notebooklm ok=1/1
+2026-06-20T00:50:46.677577+00:00 install ok name=wewrite-wechat-ai-publishing id=skills-sh:aradotso/trending-skills/wewrite-wechat-ai-publishing verdict=safe
+2026-06-20T00:50:47.390007+00:00 enable agents name=wewrite-wechat-ai-publishing ok=1/1
+2026-06-20T00:51:33.436433+00:00 install ok name=wewrite id=skills-sh:oaker-io/wewrite/wewrite verdict=safe
+2026-06-20T00:51:34.327070+00:00 enable agents name=wewrite ok=1/1
+2026-06-20T00:53:31.929590+00:00 install ok name=youtube-clipper id=skills-sh:op7418/youtube-clipper-skill/youtube-clipper verdict=safe
+2026-06-20T00:53:32.553926+00:00 enable agents name=youtube-clipper ok=1/1
+2026-06-20T00:55:14.819237+00:00 install ok name=seo-audit id=skills-sh:coreyhaines31/marketingskills/seo-audit verdict=safe
+2026-06-20T00:55:16.159462+00:00 enable agents name=seo-audit ok=1/1
+2026-06-20T00:56:23.049255+00:00 install ok name=marketing-psychology id=skills-sh:coreyhaines31/marketingskills/marketing-psychology verdict=safe
+2026-06-20T00:56:23.772205+00:00 enable agents name=marketing-psychology ok=1/1
+2026-06-20T00:57:32.263970+00:00 install ok name=content-strategy id=skills-sh:coreyhaines31/marketingskills/content-strategy verdict=caution
+2026-06-20T00:57:32.984248+00:00 enable agents name=content-strategy ok=1/1
+2026-06-20T01:02:02.100828+00:00 install ok name=copywriting id=skills-sh:coreyhaines31/marketingskills/copywriting verdict=safe
+2026-06-20T01:02:02.874157+00:00 enable agents name=copywriting ok=1/1
+2026-06-20T01:08:19.227054+00:00 install ok name=programmatic-seo id=skills-sh:coreyhaines31/marketingskills/programmatic-seo verdict=safe
+2026-06-20T01:08:20.773181+00:00 enable agents name=programmatic-seo ok=1/1
+2026-06-20T01:08:24.681196+00:00 install ok name=marketing-ideas id=skills-sh:coreyhaines31/marketingskills/marketing-ideas verdict=safe
+2026-06-20T01:08:26.378931+00:00 enable agents name=marketing-ideas ok=1/1
+2026-06-20T01:11:27.626450+00:00 install ok name=ad-creative id=skills-sh:coreyhaines31/marketingskills/ad-creative verdict=caution
+2026-06-20T01:11:28.812741+00:00 enable agents name=ad-creative ok=1/1
+2026-06-20T01:11:31.632214+00:00 install ok name=cold-email id=skills-sh:coreyhaines31/marketingskills/cold-email verdict=safe
+2026-06-20T01:11:32.702366+00:00 enable agents name=cold-email ok=1/1
+2026-06-20T01:16:32.957387+00:00 install ok name=guizang-ppt-skill id=skills-sh:op7418/guizang-ppt-skill/guizang-ppt-skill verdict=safe
+2026-06-20T01:16:34.123602+00:00 enable agents name=guizang-ppt-skill ok=1/1
+2026-06-20T01:18:10.415049+00:00 install ok name=guizang-html-to-pptx id=clawhub:guizang-html-to-pptx verdict=safe
+2026-06-20T01:18:11.295506+00:00 enable agents name=guizang-html-to-pptx ok=1/1
+2026-06-20T01:21:36.859164+00:00 install ok name=guizang-ppt-skill id=skills-sh:op7418/guizang-ppt-skill/magazine-web-ppt verdict=safe
+2026-06-20T01:21:37.757560+00:00 enable agents name=guizang-ppt-skill ok=0/1
+2026-06-20T01:27:02.293516+00:00 install ok name=gpt-image-2-style-library id=skills-sh:freestylefly/awesome-gpt-image-2/gpt-image-2-style-library verdict=safe
+2026-06-20T01:27:03.174873+00:00 enable agents name=gpt-image-2-style-library ok=1/1
+2026-06-20T01:29:19.483447+00:00 install ok name=copy-editing id=skills-sh:coreyhaines31/marketingskills/copy-editing verdict=safe
+2026-06-20T01:29:20.337970+00:00 enable agents name=copy-editing ok=1/1
+2026-06-20T01:31:17.302808+00:00 install ok name=ai-seo id=skills-sh:coreyhaines31/marketingskills/ai-seo verdict=caution
+2026-06-20T01:31:18.193230+00:00 enable agents name=ai-seo ok=1/1

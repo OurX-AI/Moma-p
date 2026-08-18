@@ -213,7 +213,7 @@ main() {
     echo "  虚拟环境: $VENV_DIR"
     echo ""
     echo "  指定版本安装:"
-    echo "    MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/scripts/install.sh | bash"
+    echo "    MOMA_VERSION=<tag> curl -fsSL https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/scripts/install.sh | bash"
     echo ""
 }
 

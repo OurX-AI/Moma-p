@@ -8,7 +8,7 @@ packages = [{include = "app"}, {include = "install"}]
 include = [
     { path = "data/agents", format = ["sdist", "wheel"] },
     { path = "data/skills", format = ["sdist", "wheel"] },
-    { path = "data/models", format = ["sdist", "wheel"] },
+    { path = "data/models/*.example", format = ["sdist", "wheel"] },
     { path = "env.example", format = ["sdist", "wheel"] },
 ]
 

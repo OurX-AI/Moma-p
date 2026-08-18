@@ -30,52 +30,12 @@
       "remark": "前端页面视觉与排版设计 → UI 设计方案与样式建议",
       "updated_at": "2026-06-18T12:00:00.000000+00:00"
     },
-    "memory": {
-      "remark": "长期记忆读写与历史检索 → MEMORY.md / HISTORY.md",
-      "updated_at": "2026-06-18T12:00:00.000000+00:00"
-    },
     "next-best-practices": {
       "remark": "Next.js 项目规范与最佳实践 → 架构/代码改进建议",
       "updated_at": "2026-06-18T12:00:00.000000+00:00"
     },
     "pptx": {
       "remark": "创建/编辑/解析演示文稿 → .pptx 幻灯片文件",
-      "updated_at": "2026-06-18T12:00:00.000000+00:00"
-    },
-    "research": {
-      "remark": "定主题搭调研框架（研究对象+对比字段）→ outline.yaml、fields.yaml",
-      "updated_at": "2026-06-18T00:00:00.000000+00:00"
-    },
-    "research-add-fields": {
-      "remark": "在大纲上补充对比字段维度 → 更新 fields.yaml",
-      "updated_at": "2026-06-18T00:00:00.000000+00:00"
-    },
-    "research-add-items": {
-      "remark": "在大纲上补充研究对象 → 更新 outline.yaml",
-      "updated_at": "2026-06-18T00:00:00.000000+00:00"
-    },
-    "research-deep": {
-      "remark": "按大纲逐对象并行深度调研 → 各对象结构化 JSON（results/）",
-      "updated_at": "2026-06-18T00:00:00.000000+00:00"
-    },
-    "research-report": {
-      "remark": "汇总深度调研 JSON 生成可读报告 → report.md",
-      "updated_at": "2026-06-18T00:00:00.000000+00:00"
-    },
-    "summarize": {
-      "remark": "URL/音视频/本地文件快速摘要 → 结构化摘要文本",
-      "updated_at": "2026-06-18T12:00:00.000000+00:00"
-    },
-    "tmux": {
-      "remark": "远程操控 tmux 会话执行交互命令 → 终端输出",
-      "updated_at": "2026-06-18T12:00:00.000000+00:00"
-    },
-    "url-news-insight-template": {
-      "remark": "指定网址按照稼先格式分析总结",
-      "updated_at": "2026-06-17T14:45:01.870199+00:00"
-    },
-    "weather": {
-      "remark": "查询天气与预报 → 天气信息",
       "updated_at": "2026-06-18T12:00:00.000000+00:00"
     },
     "web-design-guidelines": {
@@ -85,106 +45,6 @@
     "writing-guidelines": {
       "remark": "文档文风与写作规范审校 → 润色后文稿",
       "updated_at": "2026-06-18T12:00:00.000000+00:00"
-    },
-    "story-setup": {
-      "remark": "部署网文写作工具集基础设施（hooks/rules/agents/CLAUDE.md）→ 项目写作环境",
-      "updated_at": "2026-06-17T23:07:20.307203+00:00"
-    },
-    "story": {
-      "remark": "网文写作总控入口，按任务路由到各 story 子 Skill → 写作流程编排",
-      "updated_at": "2026-06-17T23:07:20.307203+00:00"
-    },
-    "story-long-write": {
-      "remark": "长篇网文从选题、大纲到分章正文创作 → 章节文稿",
-      "updated_at": "2026-06-17T23:07:20.317108+00:00"
-    },
-    "story-short-write": {
-      "remark": "短篇网文创作与成稿 → 短篇正文",
-      "updated_at": "2026-06-17T23:07:20.317108+00:00"
-    },
-    "story-long-analyze": {
-      "remark": "长篇对标作品拆文（结构/节奏/爽点模块）→ 拆文报告",
-      "updated_at": "2026-06-17T23:07:20.324032+00:00"
-    },
-    "story-short-analyze": {
-      "remark": "短篇对标作品拆文分析 → 短篇拆解报告",
-      "updated_at": "2026-06-17T23:07:20.329305+00:00"
-    },
-    "story-long-scan": {
-      "remark": "长篇题材扫榜与市场方向扫描 → 榜单/选题分析",
-      "updated_at": "2026-06-17T23:07:20.331311+00:00"
-    },
-    "story-short-scan": {
-      "remark": "短篇题材扫榜与市场扫描 → 短篇选题建议",
-      "updated_at": "2026-06-17T23:07:20.335326+00:00"
-    },
-    "story-deslop": {
-      "remark": "去除 AI 腔、冗余与套话，润色网文正文 → 自然化文稿",
-      "updated_at": "2026-06-17T23:07:20.337354+00:00"
-    },
-    "story-review": {
-      "remark": "章节/正文审稿，查节奏、人设与逻辑 → 审校意见",
-      "updated_at": "2026-06-17T23:07:20.339393+00:00"
-    },
-    "story-cover": {
-      "remark": "小说封面创意与生成方案 → 封面图/设计说明",
-      "updated_at": "2026-06-17T23:07:20.347179+00:00"
-    },
-    "story-import": {
-      "remark": "导入已有小说文稿到写作工程结构 → 分章/设定文件",
-      "updated_at": "2026-06-17T23:07:20.349740+00:00"
-    },
-    "browser-cdp": {
-      "remark": "浏览器 CDP 自动化访问与抓取 → 网页正文/榜单数据",
-      "updated_at": "2026-06-17T23:07:20.350782+00:00"
-    },
-    "video-recap": {
-      "remark": "视频内容复盘与要点摘要 → 复盘文案",
-      "updated_at": "2026-06-17T23:07:20.356071+00:00"
-    },
-    "video-voiceover": {
-      "remark": "为视频撰写旁白与配音稿 → 配音脚本",
-      "updated_at": "2026-06-17T23:07:20.357416+00:00"
-    },
-    "video-script": {
-      "remark": "视频分镜与口播脚本撰写 → 视频脚本",
-      "updated_at": "2026-06-17T23:07:20.357416+00:00"
-    },
-    "video-understanding": {
-      "remark": "理解并结构化分析视频内容 → 内容理解报告",
-      "updated_at": "2026-06-17T23:07:20.367423+00:00"
-    },
-    "video-assemble": {
-      "remark": "视频素材与片段组装方案 → 成片结构",
-      "updated_at": "2026-06-17T23:07:20.370763+00:00"
-    },
-    "video-cut": {
-      "remark": "视频剪辑切点与片段划分 → 剪辑方案",
-      "updated_at": "2026-06-17T23:07:20.372806+00:00"
-    },
-    "xiaoyuzhou-asr": {
-      "remark": "小宇宙播客音频转文字 → 播客文稿",
-      "updated_at": "2026-06-17T23:07:20.377624+00:00"
-    },
-    "wewrite": {
-      "remark": "公众号全链路管家。抓热点、写正文、SEO、配图、排版，最终直接同步微信草稿箱，全自动闭环。",
-      "updated_at": "2026-06-20T01:04:42.303689+00:00"
-    },
-    "youtube-clipper": {
-      "remark": "视频切片利器。自动抓高光、配字幕、切长视频，视频二创号的效率翻倍工具。",
-      "updated_at": "2026-06-20T01:05:25.440094+00:00"
-    },
-    "humanizer-zh": {
-      "remark": "AI 腔纠正。一键去翻译腔、去套话，让 AI 生成的内容像“人话”，发文前必过一遍。",
-      "updated_at": "2026-06-20T01:06:02.727453+00:00"
-    },
-    "guizang-social-card-skill": {
-      "remark": "社交封面图。自动生成小红书竖版轮播图和公众号封面，内置 28 套精美版式，告别手动排版。",
-      "updated_at": "2026-06-20T01:06:28.497514+00:00"
-    },
-    "qiaomu-anything-to-notebooklm": {
-      "remark": "内容转换机。一稿多投神器，网页、视频、PDF 一键转成播客、PPT、思维导图，深度挖掘内容价值。",
-      "updated_at": "2026-06-20T01:07:28.677128+00:00"
     }
   }
 }

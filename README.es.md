@@ -1,185 +1,257 @@
 # MomaCoder
 
-## Overview
+> AI-powered coding Agent that turns your terminal into an intelligent development partner
 
-### What is MomaCoder
+[![Python Version](https://img.shields.io/badge/Python-3.10+-3.12-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/OurX-AI/Moma-p.svg)](https://github.com/OurX-AI/Moma-p/releases)
 
-MomaCoder is an **AI Coding Agent** designed for software development workflows. It provides a terminal-based user interface (TUI) that enables developers to collaborate with AI on code writing, debugging, refactoring, and documentation generation using natural language. Built on an Agent architecture, it features autonomous planning, tool invocation, multi-step reasoning, and codebase awareness — capable of understanding project context and executing complex coding workflows.
+MomaCoder is an AI coding agent designed for software development workflows. It provides a terminal-based user interface (TUI) that enables developers to collaborate with AI on code writing, debugging, refactoring, and documentation generation using natural language.
 
-### Technology Stack
+## ✨ Features
 
-| Layer | Technology | Description |
-|-------|-----------|-------------|
-| Agent Framework | LangGraph + ReAct | State-graph-based Agent orchestration with sub-agent scheduling and multi-turn tool invocation |
-| User Interface | Textual (TUI) | Rich terminal UI with real-time streaming output, slash commands, and panel layouts |
-| Configuration | Pydantic Settings | Unified config from `~/.moma/env` with type validation and environment variable override |
-| Data Persistence | SQLite / PostgreSQL / MySQL | Multi-database backend support via SQLAlchemy + Alembic with schema migrations |
-| Vector Storage | Elasticsearch / OpenSearch / LanceDB | Semantic code retrieval and embedding indexing |
-| Graph Database | Neo4j | Code call graphs and dependency relationships |
-| LLM Gateway | Multi-provider unified gateway | OpenAI, Anthropic, Google, Alibaba Cloud, Tencent Cloud, Groq, Mistral, Ollama, and 10+ providers |
-| Tool Ecosystem | MCP protocol + custom tools | Codebase analysis, file system operations, web search, shell execution, etc. |
-| Code Analysis | Tree-sitter | AST parsing for Go, C, C++, JavaScript, and more |
-| Packaging | Poetry | Standardized dependency management and wheel distribution |
+- **Codebase Awareness** — Automatically scans workspaces, builds symbol indexes and call graphs for semantic code retrieval
+- **Multi-Agent Collaboration** — Sub-agent scheduling and team collaboration modes for parallel task processing
+- **Tool Invocation** — Built-in code analysis, file operations, web search, shell execution, and MCP protocol support
+- **Session Management** — Complete conversation history, context compression, and session persistence
+- **Skill System** — Pluggable skill modules with custom workflow extensibility
+- **Multi-Model Support** — OpenAI, Anthropic, Google, DeepSeek, Alibaba Cloud, Ollama, and 10+ providers
 
-### Codebase Scale
+## 📸 Demo
 
-| Metric | Value |
-|--------|-------|
-| Python source files | 409 |
-| Total lines of code | ~66,000 |
-| Core modules | agents, cli, codebase, config, services, utils |
-| Pre-built Agents | 17 (Coder, General, Utility, etc.) |
-| Model configurations | 6 types (Chat, Embedding, Rerank, TTS, STT, CV) |
-| Python version requirement | >= 3.10, < 3.13 |
+<!-- TODO: Add terminal screenshot or GIF -->
 
-### Core Capabilities
+## 🚀 Quick Start
 
-- **Codebase Awareness**: Automatically scans workspaces, builds symbol indexes and call graphs for semantic-level code retrieval
-- **Multi-Agent Collaboration**: Sub-agent scheduling and team collaboration modes for parallel processing of complex tasks
-- **Tool Invocation**: Built-in code analysis, file operations, web search, shell execution, and MCP protocol extensibility
-- **Session Management**: Complete conversation history, context compression, and session persistence
-- **Skill System**: Pluggable skill modules with custom workflow extensibility
+### Install
 
-## Development
+#### One-click Scripts (Recommended)
 
-All configuration is read from `~/.moma/env` (same as installed mode). Before first development, run `moma-setup` once to generate `~/.moma/env`, or manually copy `env.example` to `~/.moma/env` and edit as needed. After activating the virtual environment, run the source code directly:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-moma-setup                      # First time: generate ~/.moma/env and runtime resources
-python -m app.cli.main
-```
-
-Code changes take effect immediately. To store runtime data in the repo's `data/` directory, set `RUNTIME_DATA_DIR=./data` in `~/.moma/env` (relative paths resolve from the repo root).
-
-To debug with the installed `moma` command behavior:
-
-```powershell
-python -m app.cli.main --plain
-python -m app.cli.main -p "your task"
-```
-
-## Installation
-
-### One-click Script (Linux / macOS)
+Linux / macOS:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
 ```
 
-The script automatically: detects Python → creates an isolated virtual environment → downloads the wheel from GitHub Releases → runs `moma-setup` → configures PATH.
+Windows:
+
+```powershell
+$script = "$env:TEMP\moma_install.ps1"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 -OutFile $script; & $script; Remove-Item $script -Force
+```
 
 Install a specific version:
 
+Linux / macOS:
+
 ```bash
-MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.sh | bash
+MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
 ```
 
-### One-click Script (Windows)
-
-Run in PowerShell:
+Windows:
 
 ```powershell
-iwr -useb https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.ps1 | iex
+$env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
 ```
 
-The script automatically: detects Python → creates an isolated virtual environment → downloads the wheel from GitHub Releases → runs `moma-setup` → adds to user PATH. After installation, **restart your terminal** for PATH changes to take effect.
+> Restart your terminal after installation for PATH changes to take effect.
 
-Install a specific version:
+#### Windows Executable
+
+Download `momacoder.exe` from [Releases](https://github.com/OurX-AI/Moma-p/releases), place it in any directory, and run directly:
 
 ```powershell
-$env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/YickelFuboo/Moma-Coder/main/scripts/install.ps1 | iex
+.\momacoder.exe
 ```
 
-### Manual Installation from GitHub Releases
+> No Python installation required — works out of the box.
 
-1. Go to the [Releases page](https://github.com/YickelFuboo/Moma-Coder/releases) and download the latest `.whl` file
-2. Install into a virtual environment and initialize:
+#### Manual Installation
+
+1. Download the `.whl` file from [Releases](https://github.com/OurX-AI/Moma-p/releases)
+2. Install and initialize (run in any directory, replace `.whl` path with your actual download path):
 
 ```bash
 python -m venv ~/.moma/venv
-~/.moma/venv/bin/pip install momacoder-*.whl
+~/.moma/venv/bin/pip install ~/Downloads/momacoder-*.whl
 ~/.moma/venv/bin/moma-setup
 ```
 
-3. Add `~/.moma/venv/bin` to PATH, or create a symlink to `~/.local/bin`
+3. Add the virtual environment executable directory to PATH:
 
-### Installation from Source (Deployment)
+   Linux / macOS:
 
-Code is copied to site-packages, independent from the repo — repo changes won't affect the installed stable version:
+   ```bash
+   echo 'export PATH="$HOME/.moma/venv/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
 
-```powershell
-cd F:\MOMA\Moma-Coder
-.\.venv\Scripts\Activate.ps1
-python -m pip install .   # Without -e: installs a baseline copy to site-packages
-moma-setup
+   Windows (PowerShell):
+
+   ```powershell
+   [Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.moma\venv\Scripts;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+   ```
+
+#### Install from Source
+
+Linux / macOS:
+
+```bash
+git clone https://github.com/OurX-AI/Moma-p.git
+cd Moma
+python -m venv .venv
+.venv/bin/pip install -e .
+.venv/bin/moma-setup
 ```
 
-Note: Do not use `--user` when a venv is activated, as it will cause "User site-packages are not visible" errors.
-
-`moma-setup` (or `python -m app.install`) syncs `agents` / `skills` / `models` to `~/.moma`; if `~/.moma/env` doesn't exist yet, it copies from `env.example`.
-
-### Starting the Service
-
-After installation, run directly — all configuration is read from `~/.moma/env`, no extra environment variables needed:
+Windows:
 
 ```powershell
+git clone https://github.com/OurX-AI/Moma-p.git
+cd Moma
+python -m venv .venv
+.venv\Scripts\pip install -e .
+.venv\Scripts\moma-setup
+```
+
+To use the `moma` command from any directory, add the virtual environment executable directory to PATH:
+
+| Platform | Path |
+|----------|------|
+| Linux / macOS | `<Moma directory>/.venv/bin` |
+| Windows | `<Moma directory>\.venv\Scripts` |
+
+Alternatively, you can skip PATH configuration and launch directly from the project directory via `.venv/bin/moma` (or `.venv\Scripts\moma`).
+
+### ⚙️ Configuration
+
+#### Model Configuration
+
+`~/.moma/models/` contains the following config files:
+
+| File | Purpose | Required |
+|------|---------|----------|
+| `chat_models.json` | Chat models | Yes |
+| `embedding_models.json` | Embedding models (semantic search) | Yes |
+| `rerank_models.json` | Rerank models | Optional |
+| `tts_models.json` | Text-to-speech models | Optional |
+| `stt_models.json` | Speech-to-text models | Optional |
+| `cv_models.json` | Computer vision models | Optional |
+
+> After installation, `moma-setup` automatically copies example configs to `~/.moma/models/`
+
+#### Environment Variables (Optional)
+
+Edit `~/.moma/env` as needed. Common settings:
+
+```env
+# Web Search (enable one as needed)
+TAVILY_API_KEY=tvly-xxxx     # Tavily
+SERPER_API_KEY=xxxx           # Serper (Google SERP, 2500 free queries)
+WEB_SEARCH_PRIMARY=duckduckgo # Free, no key needed
+```
+
+Additional switches and advanced settings (database, Redis, vector store, agent behavior, CodeBase, etc.) are documented in `env.example` — enable as needed.
+
+### Start
+
+```bash
 moma
 ```
 
-| Scenario | Startup Command | Config Source |
-|----------|----------------|---------------|
-| Development | `python -m app.cli.main` | `~/.moma/env` |
-| Deployment | `moma` | `~/.moma/env` |
+The first launch automatically scans your workspace to build a code index.
 
-### Commands
+## 📖 Usage
 
-MOMA automatically scans the workspace in the background on startup to trigger CodeBase pre-analysis (indexing code symbols, building call graphs, preparing semantic retrieval). Use the following commands to check progress or force a rescan.
+### CLI Options
 
-**CLI Subcommands**
-
-```powershell
-moma codebase            # View current status (alias for status)
-moma codebase status     # Same as above
-moma codebase rescan     # Force a rescan
+```bash
+moma                              # Start interactive TUI
+moma -p "write a quicksort"      # Execute a task directly
+moma --plain                     # Plain text REPL mode
+moma --resume <session_id>       # Resume a previous session
+moma --model deepseek/deepseek-chat  # Specify model
+moma -w /path/to/project         # Specify workspace directory
 ```
 
-`moma codebase` only starts DB/scheduler without the Agent/TUI flow — useful for scripting status checks or scheduled rescans.
+### CodeBase Management
 
-**TUI Slash Commands**
-
-In the `moma` interactive interface:
-
-```
-/codebase            # Outputs a multi-line status report to the chat area
-/codebase rescan     # Triggers a rescan and immediately displays the new status
+```bash
+moma codebase status              # View scan status
+moma codebase rescan              # Force rescan
+moma codebase experience          # View experience extraction status
 ```
 
-**Real-time Progress Panel**
+TUI Slash Commands:
 
-The TUI polls scan status every 2 seconds:
-
-- Scanning in progress: the welcome-box right side automatically switches from "Recent activity" to a "CodeBase Progress" card showing info like `running (3s ago) · 217/350 emb`
-- After welcome-box is hidden (after first message), a bottom status-row indicator persists: `· CB ⟳ 217/350 emb`
-- Scan complete: panel switches back to "Recent activity", indicator disappears
-
-### Updating
-
-After code updates, reinstall:
-
-```powershell
-cd F:\MOMA\Moma-Coder
-.\.venv\Scripts\Activate.ps1
-python -m pip install .      # Overwrites the old version
-moma-setup                   # Syncs potentially updated agents/skills/models
+```
+/codebase                         # Output status report
+/codebase rescan                  # Trigger rescan
 ```
 
-The workspace defaults to the current directory.
+### Update & Uninstall
 
-If you get a "command not found" error, confirm the venv is activated or add `.venv\Scripts` to PATH.
+**One-click scripts / Manual install (whl):**
 
-### Uninstalling
-
-```powershell
-pip uninstall MomaCoder
+```bash
+pip install --upgrade MomaCoder   # Update
+pip uninstall MomaCoder           # Uninstall
 ```
+
+**Install from source:**
+
+```bash
+# Update: pull and reinstall
+cd Moma
+git pull
+.venv/bin/pip install -e .        # Linux / macOS
+.venv\Scripts\pip install -e .    # Windows
+
+# Uninstall
+rm -rf ~/.moma                    # Remove runtime data
+rm -rf .venv                      # Remove virtual environment (or on Windows: Remove-Item -Recurse -Force .venv)
+# Remove .venv/bin (or .venv\Scripts) from PATH
+```
+
+## 🛠️ Development
+
+All configuration is read from `~/.moma/env`. Before first development, run `moma-setup`:
+
+```bash
+moma-setup
+python -m app.cli.main
+```
+
+Code changes take effect immediately.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a Pull Request
+
+## 🔧 Tech Stack
+
+<details>
+<summary>Click to expand</summary>
+
+| Layer | Technology |
+|-------|------------|
+| Agent Framework | LangGraph + ReAct |
+| User Interface | Textual (TUI) |
+| Configuration | Pydantic Settings |
+| Database | SQLite / PostgreSQL / MySQL |
+| Vector Storage | Elasticsearch / OpenSearch / LanceDB |
+| Graph Database | Neo4j |
+| LLM Gateway | Multi-provider unified gateway |
+| Code Analysis | Tree-sitter |
+| Packaging | Poetry |
+
+</details>
+
+## 📄 License
+
+[GNU General Public License v3.0](LICENSE)

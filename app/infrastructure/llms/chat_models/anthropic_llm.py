@@ -110,7 +110,7 @@ class AnthropicModels(LLM):
                 messages.extend(self._sanitize_history(history))
  
             # 添加当前用户消息
-            if user_question or user_prompt:
+            if user_question:
                 user_message = f"{user_prompt}\n{user_question}" if user_prompt else user_question
                 messages.append({"role": "user", "content": user_message})
         

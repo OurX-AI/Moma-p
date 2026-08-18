@@ -1,0 +1,95 @@
+name: Release
+
+# 推送 v* 格式的 tag 时触发（如 v0.1.0、v1.2.3）
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  # Job 1: 构建 Python 包 (wheel + tar.gz)
+  build-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Build package
+        run: poetry build
+
+      - name: Delete old wheel/tar.gz assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get current version from tag
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "Current version: $VERSION"
+
+          # Get release ID using gh release view
+          RELEASE_ID=$(gh release view $VERSION --json databaseId -q .databaseId 2>/dev/null || echo "")
+          if [ -z "$RELEASE_ID" ]; then
+            echo "Release not found for tag $VERSION"
+            exit 0
+          fi
+          echo "Release ID: $RELEASE_ID"
+
+          # Get release assets using gh release view
+          ASSETS=$(gh release view $VERSION --json assets -q '.assets[].name' 2>/dev/null || echo "")
+
+          # Delete old momacoder wheel/tar.gz files (keep momacoder.exe)
+          for asset in $ASSETS; do
+            if [[ $asset == momacoder-* && $asset != momacoder.exe ]]; then
+              echo "Deleting old asset: $asset"
+              gh release delete-asset $VERSION $asset --yes || true
+              echo "Deleted: $asset"
+            fi
+          done
+
+          echo "Cleanup completed"
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+
+  # Job 2: 构建 Windows 安装程序
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Build Windows executable
+        run: |
+          $env:CLEAN_BUILD = "1"
+          .\scripts\build_backend.ps1
+
+      - name: Package release
+        run: .\scripts\package_release.ps1
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: release/momacoder.exe

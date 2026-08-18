@@ -3,7 +3,7 @@ name = "MomaCoder"
 version = "0.1.0"
 description = "MomaCoder 编码 Agent"
 authors = ["Your Name <your.email@example.com>"]
-packages = [{include = "app"}]
+packages = [{include = "app"}, {include = "install"}]
 # 打包后供安装态 bootstrap 复制到 ~/.moma
 include = [
     { path = "data/agents", format = ["sdist", "wheel"] },
@@ -235,7 +235,7 @@ priority = "supplemental"
 [tool.poetry.scripts]
 moma = "app.cli.main:main"
 start = "app.cli.main:main"
-moma-setup = "app.install.__main__:main"
+moma-setup = "install.__main__:main"
 
 [tool.pytest.ini_options]
 testpaths = ["Tests"]

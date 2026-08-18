@@ -11,7 +11,7 @@ class RuntimeDataBootstrap:
 
     @staticmethod
     def repo_root() -> Path:
-        return Path(__file__).resolve().parents[2]
+        return Path(__file__).resolve().parents[1]
 
     @classmethod
     def seed_root(cls) -> Path:
@@ -47,9 +47,9 @@ class RuntimeDataBootstrap:
                 if name.endswith(".pyc") or name == ".DS_Store":
                     continue
                 src_file = Path(root) / name
-                # 去掉 .example 后缀，如 chat_models.json.example → chat_models.json
-                dst_name = name[:-8] if name.endswith(".example") else name
-                dst_file = out_dir / dst_name
+                # .example 后缀的文件去掉后缀再写入目标
+                target_name = name[:-8] if name.endswith(".example") else name
+                dst_file = out_dir / target_name
                 if dst_file.exists():
                     continue
                 shutil.copy2(src_file, dst_file)

@@ -223,7 +223,7 @@ function Install-MomaCoder {
     Write-Host "  Venv: $VenvDir"
     Write-Host ""
     Write-Host "  Install specific version:"
-    Write-Host "    `$env:MOMA_VERSION=`"v0.1.0`"; iwr -useb https://raw.githubusercontent.com/$GitHubUser/$GitHubRepo/main/scripts/install.ps1 | iex"
+    Write-Host "    `$env:MOMA_VERSION=`"$MomaVersion`"; iwr -useb https://raw.githubusercontent.com/$GitHubUser/$GitHubRepo/main/scripts/install.ps1 | iex"
     Write-Host ""
     Read-Host "Press Enter to close"
 }

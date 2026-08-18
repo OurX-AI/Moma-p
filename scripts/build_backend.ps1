@@ -1,14 +1,11 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $rootDir = Resolve-Path (Join-Path $scriptDir "..")
-$backendDir = Join-Path $rootDir "backend"
 $packRootDir = Join-Path $rootDir "dist"
 $distDir = Join-Path $packRootDir "backend"
 $buildDir = Join-Path $packRootDir "backend_build"
 $specFile = Join-Path $packRootDir "momacoder.spec"
-$frontendDistDir = Join-Path $rootDir "frontend/dist"
-$embeddedFrontendDir = Join-Path $packRootDir "frontend_dist"
 $cleanBuild = ($env:CLEAN_BUILD -eq "1")
 $guiBuild = ($env:DEBUG_CONSOLE -ne "1")
 
@@ -41,16 +38,12 @@ function Remove-WithRetry {
     return $false
 }
 
-if (-not (Test-Path $backendDir)) {
-    throw "backend directory not found: $backendDir"
-}
-
 if (-not (Get-Command poetry -ErrorAction SilentlyContinue)) {
     throw "poetry not found in PATH."
 }
 
 Write-Host "[backend] install dependencies..."
-Push-Location $backendDir
+Push-Location $rootDir
 try {
     poetry install
 
@@ -61,10 +54,6 @@ try {
     catch {
         Write-Host "[backend] default index failed, retry with aliyun mirror..."
         poetry run pip install -i https://mirrors.aliyun.com/pypi/simple/ pyinstaller pywebview aiosqlite
-    }
-
-    if (-not (Test-Path $frontendDistDir)) {
-        throw "frontend dist not found: $frontendDistDir. Please run scripts/build_frontend.ps1 first."
     }
 
     if ($cleanBuild) {
@@ -79,16 +68,13 @@ try {
     if (-not (Test-Path $packRootDir)) {
         New-Item -ItemType Directory -Path $packRootDir | Out-Null
     }
-    [void](Remove-WithRetry -Path $embeddedFrontendDir -Recurse)
-
-    Write-Host "[backend] embed frontend dist..."
-    New-Item -ItemType Directory -Path $embeddedFrontendDir -Force | Out-Null
-    Copy-Item (Join-Path $frontendDistDir "*") $embeddedFrontendDir -Recurse
 
     Write-Host "[backend] build exe..."
-    $backendPyproject = Join-Path $backendDir "pyproject.toml"
-    $agentPresetDir = Join-Path $backendDir "app/agents/.agent"
-    $llmPromptsDir = Join-Path $backendDir "app/infrastructure/llms/prompts"
+    $pyproject = Join-Path $rootDir "pyproject.toml"
+    $agentsDir = Join-Path $rootDir "data/agents"
+    $skillsDir = Join-Path $rootDir "data/skills"
+    $modelsDir = Join-Path $rootDir "data/models"
+    $promptsDir = Join-Path $rootDir "app/infrastructure/llms/prompts"
     $pyinstallerArgs = @(
         "--name", "momacoder",
         "--onefile",
@@ -96,10 +82,11 @@ try {
         "--distpath", "$distDir",
         "--workpath", "$buildDir",
         "--specpath", "$packRootDir",
-        "--add-data", "$embeddedFrontendDir;frontend_dist",
-        "--add-data", "$backendPyproject;app",
-        "--add-data", "$agentPresetDir;app/agents/.agent",
-        "--add-data", "$llmPromptsDir;app/infrastructure/llms/prompts",
+        "--add-data", "$pyproject;app",
+        "--add-data", "$agentsDir;data/agents",
+        "--add-data", "$skillsDir;data/skills",
+        "--add-data", "$modelsDir;data/models",
+        "--add-data", "$promptsDir;app/infrastructure/llms/prompts",
         "--hidden-import", "webview",
         "--hidden-import", "aiosqlite",
         "--hidden-import", "tiktoken_ext.openai_public",
@@ -115,11 +102,8 @@ try {
     else {
         Write-Host "[backend] debug console mode enabled."
     }
-    $pyinstallerArgs += "app/main_packaged.py"
+    $pyinstallerArgs += "app/main.py"
     poetry run pyinstaller @pyinstallerArgs
-
-    # 清理打包过程中的临时目录（保留 backend_build/spec 以支持增量构建）
-    [void](Remove-WithRetry -Path $embeddedFrontendDir -Recurse)
 }
 finally {
     Pop-Location

@@ -7,10 +7,6 @@ $backendExe = Join-Path $rootDir "dist/backend/momacoder.exe"
 $packRootDir = Join-Path $rootDir "dist"
 $releaseDir = Join-Path $rootDir "release"
 $releaseConfigDir = Join-Path $releaseDir "config"
-$legacyBackendBuildDir = Join-Path $rootDir "backend/build"
-$legacyBackendDistDir = Join-Path $rootDir "backend/dist"
-$legacyBackendFrontendDistDir = Join-Path $rootDir "backend/frontend_dist"
-$legacyBackendSpecFile = Join-Path $rootDir "backend/momacoder.spec"
 
 function Remove-WithRetry {
     param(
@@ -52,46 +48,22 @@ New-Item -ItemType Directory -Path $releaseConfigDir -Force | Out-Null
 
 Copy-Item $backendExe $releaseDir -Force
 
-$backendEnvProd = Join-Path $rootDir "backend/env.production"
-$backendEnv = if (Test-Path $backendEnvProd) { $backendEnvProd } else { Join-Path $rootDir "backend/env" }
+# Copy env config
+$envProd = Join-Path $rootDir "env.production"
+$envFile = if (Test-Path $envProd) { $envProd } else { Join-Path $rootDir "env" }
 $releaseEnv = Join-Path $releaseConfigDir "env"
-if ((Test-Path $backendEnv) -and (-not (Test-Path $releaseEnv))) {
-    Copy-Item $backendEnv $releaseEnv
+if ((Test-Path $envFile) -and (-not (Test-Path $releaseEnv))) {
+    Copy-Item $envFile $releaseEnv
 }
 
-$modelConfigDir = Join-Path $rootDir "backend/app/config"
-if (Test-Path $modelConfigDir) {
-    Get-ChildItem -Path $modelConfigDir -Filter "*.json" | ForEach-Object {
-        $target = Join-Path $releaseConfigDir $_.Name
-        if (-not (Test-Path $target)) {
-            Copy-Item $_.FullName $target
-        }
-    }
+# Clean up dist build artifacts (keep momacoder.spec for incremental builds)
+$distBackendDir = Join-Path $packRootDir "backend"
+$distBuildDir = Join-Path $packRootDir "backend_build"
+if (Test-Path $distBackendDir) {
+    [void](Remove-WithRetry -Path $distBackendDir -Recurse)
 }
-
-# 清理 dist 中已复制到 release 的产物，保留 backend_build 与 momacoder.spec 以支持增量构建
-if (Test-Path $packRootDir) {
-    $distBackendDir = Join-Path $packRootDir "backend"
-    $distFrontendEmbed = Join-Path $packRootDir "frontend_dist"
-    if (Test-Path $distBackendDir) {
-        [void](Remove-WithRetry -Path $distBackendDir -Recurse)
-    }
-    if (Test-Path $distFrontendEmbed) {
-        [void](Remove-WithRetry -Path $distFrontendEmbed -Recurse)
-    }
-}
-if (Test-Path $legacyBackendBuildDir) {
-    [void](Remove-WithRetry -Path $legacyBackendBuildDir -Recurse)
-}
-if (Test-Path $legacyBackendDistDir) {
-    [void](Remove-WithRetry -Path $legacyBackendDistDir -Recurse)
-}
-if (Test-Path $legacyBackendFrontendDistDir) {
-    [void](Remove-WithRetry -Path $legacyBackendFrontendDistDir -Recurse)
-}
-if (Test-Path $legacyBackendSpecFile) {
-    [void](Remove-WithRetry -Path $legacyBackendSpecFile)
+if (Test-Path $distBuildDir) {
+    [void](Remove-WithRetry -Path $distBuildDir -Recurse)
 }
 
 Write-Host "[release] packaged at: $releaseDir"
-

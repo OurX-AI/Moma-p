@@ -1,56 +1,123 @@
 <#
 .SYNOPSIS
-    MomaCoder 一键安装脚本（Windows PowerShell）
+    MomaCoder One-Click Install Script (Windows PowerShell)
 
 .DESCRIPTION
-    自动检测 Python → 创建虚拟环境 → 从 GitHub Releases 下载 wheel → pip install → moma-setup → 配置 PATH
+    Auto-detect/Install Python -> Create venv -> Download wheel from GitHub Releases -> pip install -> moma-setup -> Configure PATH
 
 .EXAMPLE
-    # 默认安装最新版本
-    iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
+    # Install latest version
+    $script = "$env:TEMP\moma_install.ps1"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 -OutFile $script; & $script; Remove-Item $script -Force
 
-    # 指定版本
-    $env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
+    # Install specific version
+    $env:MOMA_VERSION="v0.1.0"; $script = "$env:TEMP\moma_install.ps1"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 -OutFile $script; & $script; Remove-Item $script -Force
 #>
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-# ============ 配置 ============
+# ============ Configuration ============
 $GitHubUser = "OurX-AI"
-$GitHubRepo = "Moma-p"
+$GitHubRepo = "Moma"
 $InstallDir = if ($env:MOMA_HOME) { $env:MOMA_HOME } else { Join-Path $env:USERPROFILE ".moma" }
 $VenvDir    = Join-Path $InstallDir "venv"
 $BinDir     = Join-Path $VenvDir "Scripts"
 $MomaVersion = if ($env:MOMA_VERSION) { $env:MOMA_VERSION } else { "latest" }
+$PythonVersion = "3.11.9"
+$PythonInstallerUrl = "https://www.python.org/ftp/python/$PythonVersion/python-$PythonVersion-amd64.exe"
 
-# ============ 工具函数 ============
+# ============ Utility Functions ============
 function Write-Info  { param([string]$Msg) Write-Host "[INFO] $Msg" -ForegroundColor Green }
 function Write-Warn  { param([string]$Msg) Write-Host "[WARN] $Msg" -ForegroundColor Yellow }
 function Write-Error { param([string]$Msg) Write-Host "[ERROR] $Msg" -ForegroundColor Red }
 
-# ============ 检测 Python ============
+# ============ Download File ============
+function Download-File {
+    param([string]$Url, [string]$OutputPath)
+    Write-Info "Downloading: $Url"
+    try {
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($Url, $OutputPath)
+        return $true
+    } catch {
+        Write-Warn "Download failed: $_"
+        return $false
+    }
+}
+
+# ============ Detect Python ============
 function Find-Python {
     $candidates = @("python", "python3", "py -3")
     foreach ($cmd in $candidates) {
         try {
-            $verStr = & cmd /c "$cmd -c `"import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')`" 2>$null"
+            $verStr = & $cmd -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')" 2>$null
             if ($verStr -match "^(\d+)\.(\d+)$") {
                 $major = [int]$Matches[1]
                 $minor = [int]$Matches[2]
                 if ($major -eq 3 -and $minor -ge 10 -and $minor -lt 13) {
-                    Write-Info "检测到 Python $verStr ($cmd)"
+                    Write-Info "Detected Python $verStr ($cmd)"
                     return $cmd
                 }
             }
         } catch { }
     }
-    Write-Error "需要 Python 3.10 ~ 3.12，但未找到。"
-    Write-Error "请从 https://www.python.org/downloads/ 安装后重试。"
-    exit 1
+    return $null
 }
 
-# ============ 获取 wheel 下载地址 ============
+# ============ Install Python ============
+function Install-Python {
+    Write-Warn "Python 3.10 ~ 3.12 not found. Installing Python $PythonVersion..."
+
+    $tempDir = Join-Path $env:TEMP "moma_install"
+    if (-not (Test-Path $tempDir)) {
+        New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
+    }
+
+    $installerPath = Join-Path $tempDir "python-installer.exe"
+
+    # Download Python installer
+    if (-not (Download-File -Url $PythonInstallerUrl -OutputPath $installerPath)) {
+        Write-Error "Cannot download Python installer"
+        Write-Error "Please install Python 3.10 ~ 3.12 manually: https://www.python.org/downloads/"
+        exit 1
+    }
+
+    # Silent install Python
+    Write-Info "Installing Python $PythonVersion (silent install, may take a few minutes)..."
+    $installArgs = @(
+        "/quiet",
+        "InstallAllUsers=0",
+        "PrependPath=1",
+        "Include_test=0",
+        "TargetDir=$env:LOCALAPPDATA\Programs\Python\Python$($PythonVersion.Replace('.', ''))"
+    )
+
+    $process = Start-Process -FilePath $installerPath -ArgumentList $installArgs -Wait -PassThru -NoNewWindow
+    if ($process.ExitCode -ne 0) {
+        Write-Error "Python installation failed, exit code: $($process.ExitCode)"
+        Write-Error "Please install Python 3.10 ~ 3.12 manually: https://www.python.org/downloads/"
+        exit 1
+    }
+
+    # Cleanup installer
+    Remove-Item -Path $installerPath -Force -ErrorAction SilentlyContinue
+
+    # Refresh PATH
+    $env:Path = [Environment]::GetEnvironmentVariable("Path", "User") + ";" + [Environment]::GetEnvironmentVariable("Path", "Machine")
+
+    # Verify installation
+    $pythonCmd = Find-Python
+    if ($pythonCmd) {
+        Write-Info "Python installed successfully!"
+        return $pythonCmd
+    } else {
+        Write-Error "Python still not found after installation. Please restart terminal and run install script again."
+        exit 1
+    }
+}
+
+# ============ Get Wheel URL ============
 function Get-WheelUrl {
     param([string]$Version)
     if ($Version -eq "latest") {
@@ -59,99 +126,106 @@ function Get-WheelUrl {
         $apiUrl = "https://api.github.com/repos/$GitHubUser/$GitHubRepo/releases/tags/$Version"
     }
 
-    Write-Info "查询 GitHub Release: $Version"
+    Write-Info "Querying GitHub Release: $Version"
 
     try {
         $headers = @{ "User-Agent" = "moma-installer" }
         $resp = Invoke-RestMethod -Uri $apiUrl -Headers $headers -TimeoutSec 30
-        $asset = $resp.assets | Where-Object { $_.name -like "*.whl" } | Select-Object -First 1
-        if (-not $asset) {
-            Write-Error "Release 中未找到 .whl 文件"
+        $assets = $resp.assets | Where-Object { $_.name -like "*.whl" }
+        if (-not $assets) {
+            Write-Error ".whl file not found in Release"
             exit 1
         }
+        # Select the latest version (highest version number)
+        $asset = $assets | Sort-Object { [version]($_.name -replace 'momacoder-(.+)-py3-none-any\.whl', '$1') } -Descending | Select-Object -First 1
         return $asset.browser_download_url
     } catch {
-        Write-Error "GitHub API 请求失败: $_"
-        Write-Error "也可手动下载: https://github.com/$GitHubUser/$GitHubRepo/releases"
+        Write-Error "GitHub API request failed: $_"
+        Write-Error "Manual download: https://github.com/$GitHubUser/$GitHubRepo/releases"
         exit 1
     }
 }
 
-# ============ 配置 PATH ============
+# ============ Configure PATH ============
 function Add-ToUserPath {
     param([string]$Dir)
     $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
     if ($userPath -split ";" | Where-Object { $_ -eq $Dir }) {
-        Write-Info "$Dir 已在 PATH 中"
+        Write-Info "$Dir already in PATH"
         return
     }
     [Environment]::SetEnvironmentVariable("Path", "$Dir;$userPath", "User")
     $env:Path = "$Dir;$env:Path"
-    Write-Info "已将 $Dir 添加到用户 PATH（重新打开终端后生效）"
+    Write-Info "Added $Dir to user PATH (restart terminal to take effect)"
 }
 
-# ============ 主流程 ============
+# ============ Main Flow ============
 function Install-MomaCoder {
     Write-Host ""
     Write-Host "  ============================================" -ForegroundColor Cyan
-    Write-Host "           MomaCoder 安装程序 (Windows)         " -ForegroundColor Cyan
+    Write-Host "           MomaCoder Installer (Windows)       " -ForegroundColor Cyan
     Write-Host "  ============================================" -ForegroundColor Cyan
     Write-Host ""
 
+    # Detect or install Python
     $pythonCmd = Find-Python
+    if (-not $pythonCmd) {
+        $pythonCmd = Install-Python
+    }
 
-    # 创建安装目录
+    # Create install directory
     if (-not (Test-Path $InstallDir)) {
         New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
     }
 
-    # 创建虚拟环境
+    # Create virtual environment
     if (-not (Test-Path $VenvDir)) {
-        Write-Info "创建虚拟环境: $VenvDir"
+        Write-Info "Creating virtual environment: $VenvDir"
         & $pythonCmd -m venv $VenvDir
     } else {
-        Write-Info "虚拟环境已存在: $VenvDir"
+        Write-Info "Virtual environment already exists: $VenvDir"
     }
 
     $venvPip    = Join-Path $VenvDir "Scripts\pip.exe"
     $venvPython = Join-Path $VenvDir "Scripts\python.exe"
 
-    # 升级 pip
-    Write-Info "升级 pip..."
+    # Upgrade pip
+    Write-Info "Upgrading pip..."
     & $venvPython -m pip install --upgrade pip --quiet
 
-    # 获取 wheel 地址并安装
+    # Get wheel URL and install
     $wheelUrl = Get-WheelUrl -Version $MomaVersion
-    Write-Info "下载并安装: $wheelUrl"
-    & $venvPip install $wheelUrl
+    Write-Info "Downloading and installing: $wheelUrl"
+    & $venvPython -m pip install $wheelUrl
 
-    # 运行 moma-setup 初始化运行时数据
+    # Run moma-setup to initialize runtime data
     $momaSetup = Join-Path $VenvDir "Scripts\moma-setup.exe"
-    Write-Info "初始化运行时数据..."
+    Write-Info "Initializing runtime data..."
     if (Test-Path $momaSetup) {
         & $momaSetup
     } else {
-        Write-Warn "未找到 moma-setup，跳过初始化"
+        Write-Warn "moma-setup not found, skipping initialization"
     }
 
-    # 添加到 PATH
+    # Add to PATH
     Add-ToUserPath -Dir $BinDir
 
-    # 完成
+    # Done
     Write-Host ""
-    Write-Host "  [OK] 安装完成！" -ForegroundColor Green
+    Write-Host "  [OK] Installation complete!" -ForegroundColor Green
     Write-Host ""
-    Write-Host "  使用方法（重新打开终端后）："
-    Write-Host "    moma              # 启动 MomaCoder"
-    Write-Host "    moma-setup        # 重新初始化运行时数据"
+    Write-Host "  Usage (restart terminal first):"
+    Write-Host "    moma              # Start MomaCoder"
+    Write-Host "    moma-setup        # Re-initialize runtime data"
     Write-Host ""
-    Write-Host "  配置文件: $InstallDir\env"
-    Write-Host "  模型配置: $InstallDir\models\chat_models.json"
-    Write-Host "  虚拟环境: $VenvDir"
+    Write-Host "  Config: $InstallDir\env"
+    Write-Host "  Models: $InstallDir\models\chat_models.json"
+    Write-Host "  Venv: $VenvDir"
     Write-Host ""
-    Write-Host "  指定版本安装："
+    Write-Host "  Install specific version:"
     Write-Host "    `$env:MOMA_VERSION=`"v0.1.0`"; iwr -useb https://raw.githubusercontent.com/$GitHubUser/$GitHubRepo/main/scripts/install.ps1 | iex"
     Write-Host ""
+    Read-Host "Press Enter to close"
 }
 
 Install-MomaCoder

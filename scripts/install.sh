@@ -12,7 +12,7 @@ set -euo pipefail
 
 # ============ 配置 ============
 GITHUB_USER="OurX-AI"
-GITHUB_REPO="Moma-p"
+GITHUB_REPO="Moma"
 INSTALL_DIR="${MOMA_HOME:-$HOME/.moma}"
 VENV_DIR="$INSTALL_DIR/venv"
 BIN_DIR="$HOME/.local/bin"

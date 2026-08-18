@@ -3,8 +3,8 @@
 > AI 驱动的编码 Agent，让终端成为你的智能开发伙伴
 
 [![Python Version](https://img.shields.io/badge/Python-3.10+-3.12-blue.svg)](https://www.python.org/downloads/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/OurX-AI/Moma-p-p.svg)](https://github.com/OurX-AI/Moma-p-p/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/OurX-AI/Moma-p.svg)](https://github.com/OurX-AI/Moma-p/releases)
 
 MomaCoder 是一款面向软件开发场景的 AI 编码 Agent，以命令行交互界面（TUI）为载体，支持开发者通过自然语言与 AI 协作完成代码编写、调试、重构、文档生成等任务。
 
@@ -25,79 +25,113 @@ MomaCoder 是一款面向软件开发场景的 AI 编码 Agent，以命令行交
 
 ### 安装
 
-**Linux / macOS**
+#### 一键脚本（推荐）
+
+Linux / macOS:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
 ```
 
-**Windows (PowerShell)**
+Windows:
 
 ```powershell
-iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
+$script = "$env:TEMP\moma_install.ps1"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 -OutFile $script; & $script; Remove-Item $script -Force
+```
+
+指定版本：
+
+Linux / macOS:
+
+```bash
+MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
+```
+
+Windows:
+
+```powershell
+$env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 | iex
 ```
 
 > 安装完成后请重新打开终端使 PATH 生效
 
-### 配置模型
+#### Windows 可执行文件
 
-需要配置两个文件：
+从 [Releases](https://github.com/OurX-AI/Moma-p/releases) 下载 `momacoder.exe`，放到任意目录后直接运行：
 
-**1. 聊天模型** — 编辑 `~/.moma/models/chat_models.json`：
-
-```json
-{
-  "default": {
-    "provider": "deepseek",
-    "model": "deepseek-chat"
-  },
-  "models": {
-    "deepseek": {
-      "base_url": "https://api.deepseek.com/v1",
-      "api_key": "sk-xxxx",
-      "api_type": "openai",
-      "instances": {
-        "deepseek-chat": { "description": "DeepSeek Chat" },
-        "deepseek-coder": { "description": "DeepSeek Coder" }
-      }
-    }
-  }
-}
+```powershell
+.\momacoder.exe
 ```
 
-**2. Embedding 模型** — 编辑 `~/.moma/models/embedding_models.json`（CodeBase 语义检索必需）：
+> 此方式无需安装 Python，开箱即用。
 
-```json
-{
-  "default": {
-    "provider": "siliconflow",
-    "model": "BAAI/bge-m3"
-  },
-  "models": {
-    "siliconflow": {
-      "base_url": "https://api.siliconflow.cn/v1",
-      "api_key": "sk-xxxx",
-      "instances": {
-        "BAAI/bge-m3": { "description": "BAAI BGE M3 多语言嵌入" }
-      }
-    }
-  }
-}
-```
+#### 手动安装
 
-支持的提供商：OpenAI、Anthropic、Google、DeepSeek、通义千问、SiliconFlow、Ollama 等。
-
-### 启动
+1. 从 [Releases](https://github.com/OurX-AI/Moma-p/releases) 下载 `.whl` 文件
+2. 安装并初始化（在任意目录执行，`.whl` 路径替换为实际下载路径）：
 
 ```bash
-moma
+python -m venv ~/.moma/venv
+~/.moma/venv/bin/pip install ~/Downloads/momacoder-*.whl
+~/.moma/venv/bin/moma-setup
 ```
 
-首次启动会自动扫描工作区构建代码索引，耐心等待即可。
+3. 将虚拟环境可执行目录加入 PATH：
 
-## ⚙️ 配置
+   Linux / macOS：
 
-### 模型配置
+   ```bash
+   echo 'export PATH="$HOME/.moma/venv/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+
+   Windows（PowerShell）：
+
+   ```powershell
+   [Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.moma\venv\Scripts;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+   ```
+
+   Windows（PowerShell）：
+
+   ```powershell
+   [Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.moma\venv\Scripts;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+   ```
+
+#### 从源码安装
+
+Linux / macOS:
+
+```bash
+git clone https://github.com/OurX-AI/Moma-p.git
+cd Moma
+python -m venv .venv
+.venv/bin/pip install -e .
+.venv/bin/moma-setup
+```
+
+Windows:
+
+```powershell
+git clone https://github.com/OurX-AI/Moma-p.git
+cd Moma
+python -m venv .venv
+.venv\Scripts\pip install -e .
+.venv\Scripts\moma-setup
+```
+
+安装后需将虚拟环境的可执行目录加入 PATH，以便在任意位置使用 `moma` 命令：
+
+| 系统 | 路径 |
+|------|------|
+| Linux / macOS | `<Moma目录>/.venv/bin` |
+| Windows | `<Moma目录>\.venv\Scripts` |
+
+也可以不配置 PATH，直接在项目目录下通过 `.venv/bin/moma`（或 `.venv\Scripts\moma`）启动。
+
+
+### ⚙️ 配置
+
+#### 模型配置
 
 `~/.moma/models/` 目录下包含以下配置文件：
 
@@ -112,9 +146,11 @@ moma
 
 > 首次安装后 `moma-setup` 会自动复制示例配置文件到 `~/.moma/models/`
 
-### 搜索服务配置（可选）
+#### 搜索服务配置（可选）
 
-编辑 `~/.moma/env`，配置 Web 搜索 API Key：
+编辑 `~/.moma/env`
+
+1. 配置 Web 搜索 API Key：
 
 ```env
 # Tavily 搜索
@@ -127,33 +163,16 @@ SERPER_API_KEY=xxxx
 WEB_SEARCH_PRIMARY=duckduckgo
 ```
 
-## 📦 安装方式
+2. 按照需要配置各种全局功能开关（可选）
 
-### 一键脚本（推荐）
-
-| 系统 | 命令 |
-|------|------|
-| Linux / macOS | `curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh \| bash` |
-| Windows | `iwr -useb https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.ps1 \| iex` |
-
-指定版本：
+### 启动
 
 ```bash
-MOMA_VERSION=v0.1.0 curl -fsSL https://raw.githubusercontent.com/OurX-AI/Moma-p/main/scripts/install.sh | bash
+moma
 ```
 
-### 手动安装
+首次启动会自动扫描工作区构建代码索引，耐心等待即可。
 
-1. 从 [Releases](https://github.com/OurX-AI/Moma-p/releases) 下载 `.whl` 文件
-2. 安装并初始化：
-
-```bash
-python -m venv ~/.moma/venv
-~/.moma/venv/bin/pip install momacoder-*.whl
-~/.moma/venv/bin/moma-setup
-```
-
-3. 将 `~/.moma/venv/bin` 加入 PATH
 
 ## 📖 使用说明
 
@@ -185,9 +204,26 @@ TUI 内 Slash 命令：
 
 ### 更新与卸载
 
+**一键脚本 / 手动安装（whl）：**
+
 ```bash
 pip install --upgrade MomaCoder   # 更新
 pip uninstall MomaCoder           # 卸载
+```
+
+**从源码安装：**
+
+```bash
+# 更新：进入项目目录重新安装
+cd Moma
+git pull
+.venv/bin/pip install -e .        # Linux / macOS
+.venv\Scripts\pip install -e .    # Windows
+
+# 卸载
+rm -rf ~/.moma                    # 删除运行时数据
+rm -rf .venv                      # 删除虚拟环境（或在 Windows 中 Remove-Item -Recurse -Force .venv）
+# 从 PATH 中移除 .venv/bin（或 .venv\Scripts）
 ```
 
 ## 🛠️ 开发

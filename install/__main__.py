@@ -1,5 +1,5 @@
-"""部署安装入口：python -m app.install"""
-from app.install.runtime_bootstrap import RuntimeDataBootstrap
+"""部署安装入口：python -m install"""
+from install.runtime_bootstrap import RuntimeDataBootstrap
 
 
 def main() -> None:

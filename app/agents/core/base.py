@@ -521,6 +521,8 @@ class BaseAgent(ABC):
             self._bg_tasks.discard(task)
             try:
                 task.result()
+            except asyncio.CancelledError:
+                pass
             except Exception as e:
                 logging.warning("Memory consolidate_memory (background) failed: %s", e)
 

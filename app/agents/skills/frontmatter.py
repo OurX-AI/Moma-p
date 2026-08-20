@@ -19,6 +19,8 @@ class SkillFrontmatter:
     @staticmethod
     def parse(content: str) -> dict[str, Any] | None:
         """解析 SKILL.md 开头的 YAML frontmatter；无有效 frontmatter 时返回 None。"""
+        if content.startswith("\ufeff"):
+            content = content[1:]
         if not content.startswith("---"):
             return None
         match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
@@ -33,6 +35,8 @@ class SkillFrontmatter:
     @staticmethod
     def strip(content: str) -> str:
         """去掉 SKILL.md 开头的 YAML frontmatter（---...---），只保留正文。"""
+        if content.startswith("\ufeff"):
+            content = content[1:]
         if content.startswith("---"):
             match = re.match(r"^---\n.*?\n---\n", content, re.DOTALL)
             if match:

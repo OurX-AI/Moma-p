@@ -55,16 +55,6 @@ $env:MOMA_VERSION="v0.1.0"; iwr -useb https://raw.githubusercontent.com/OurX-AI/
 
 > 安装完成后请重新打开终端使 PATH 生效
 
-#### Windows 可执行文件
-
-从 [Releases](https://github.com/OurX-AI/Moma-p/releases) 下载 `momacoder.exe`，放到任意目录后直接运行：
-
-```powershell
-.\momacoder.exe
-```
-
-> 此方式无需安装 Python，开箱即用。
-
 #### 手动安装
 
 1. 从 [Releases](https://github.com/OurX-AI/Moma-p/releases) 下载 `.whl` 文件

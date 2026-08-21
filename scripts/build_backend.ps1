@@ -7,7 +7,6 @@ $distDir = Join-Path $packRootDir "backend"
 $buildDir = Join-Path $packRootDir "backend_build"
 $specFile = Join-Path $packRootDir "momacoder.spec"
 $cleanBuild = ($env:CLEAN_BUILD -eq "1")
-$guiBuild = ($env:DEBUG_CONSOLE -ne "1")
 
 function Remove-WithRetry {
     param(
@@ -47,13 +46,13 @@ Push-Location $rootDir
 try {
     poetry install
 
-    Write-Host "[backend] ensure packager dependencies..."
+    Write-Host "[backend] ensure dependencies..."
     try {
-        poetry run pip install pyinstaller pywebview aiosqlite
+        poetry run pip install pywebview aiosqlite
     }
     catch {
         Write-Host "[backend] default index failed, retry with aliyun mirror..."
-        poetry run pip install -i https://mirrors.aliyun.com/pypi/simple/ pyinstaller pywebview aiosqlite
+        poetry run pip install -i https://mirrors.aliyun.com/pypi/simple/ pywebview aiosqlite
     }
 
     if ($cleanBuild) {
@@ -65,45 +64,6 @@ try {
     else {
         Write-Host "[backend] incremental build mode (set CLEAN_BUILD=1 for full clean rebuild)."
     }
-    if (-not (Test-Path $packRootDir)) {
-        New-Item -ItemType Directory -Path $packRootDir | Out-Null
-    }
-
-    Write-Host "[backend] build exe..."
-    $pyproject = Join-Path $rootDir "pyproject.toml"
-    $agentsDir = Join-Path $rootDir "data/agents"
-    $skillsDir = Join-Path $rootDir "data/skills"
-    $modelsDir = Join-Path $rootDir "data/models"
-    $promptsDir = Join-Path $rootDir "app/infrastructure/llms/prompts"
-    $pyinstallerArgs = @(
-        "--name", "momacoder",
-        "--onefile",
-        "--paths", ".",
-        "--distpath", "$distDir",
-        "--workpath", "$buildDir",
-        "--specpath", "$packRootDir",
-        "--add-data", "$pyproject;app",
-        "--add-data", "$agentsDir;data/agents",
-        "--add-data", "$skillsDir;data/skills",
-        "--add-data", "$modelsDir;data/models",
-        "--add-data", "$promptsDir;app/infrastructure/llms/prompts",
-        "--hidden-import", "webview",
-        "--hidden-import", "aiosqlite",
-        "--hidden-import", "tiktoken_ext.openai_public",
-        "--exclude-module", "torch",
-        "--exclude-module", "torchaudio",
-        "--exclude-module", "torchvision",
-        "--exclude-module", "tensorflow"
-    )
-    if ($guiBuild) {
-        Write-Host "[backend] GUI build mode (no console window). Set DEBUG_CONSOLE=1 to keep console."
-        $pyinstallerArgs += "--noconsole"
-    }
-    else {
-        Write-Host "[backend] debug console mode enabled."
-    }
-    $pyinstallerArgs += "app/main.py"
-    poetry run pyinstaller @pyinstallerArgs
 }
 finally {
     Pop-Location

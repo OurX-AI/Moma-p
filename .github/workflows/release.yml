@@ -47,9 +47,9 @@ jobs:
           # Get release assets using gh release view
           ASSETS=$(gh release view $VERSION --json assets -q '.assets[].name' 2>/dev/null || echo "")
 
-          # Delete old momacoder wheel/tar.gz files (keep momacoder.exe)
+          # Delete old momacoder wheel/tar.gz files
           for asset in $ASSETS; do
-            if [[ $asset == momacoder-* && $asset != momacoder.exe ]]; then
+            if [[ $asset == momacoder-* ]]; then
               echo "Deleting old asset: $asset"
               gh release delete-asset $VERSION $asset --yes || true
               echo "Deleted: $asset"
@@ -65,31 +65,3 @@ jobs:
           files: |
             dist/*.whl
             dist/*.tar.gz
-
-  # Job 2: 构建 Windows 安装程序
-  build-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Build Windows executable
-        run: |
-          $env:CLEAN_BUILD = "1"
-          .\scripts\build_backend.ps1
-
-      - name: Package release
-        run: .\scripts\package_release.ps1
-
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v3
-        with:
-          files: release/momacoder.exe

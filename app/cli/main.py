@@ -99,6 +99,9 @@ def _should_use_tui(args: argparse.Namespace) -> bool:
         return False
     if args.tui:
         return True
+    # sys.stdout可能为None（如无头环境、输出重定向等）
+    if sys.stdout is None or not hasattr(sys.stdout, 'isatty'):
+        return False
     return sys.stdout.isatty()
 
 
